@@ -1,11 +1,15 @@
 import sqlalchemy as db
-from sqlalchemy import inspect
+from sqlalchemy import inspect, desc, asc
 from sqlalchemy.engine.reflection import Inspector
+from sqlalchemy.sql.expression import func, select
+from sqlalchemy.orm import sessionmaker
 
 import code
 
 import pickle
 import os
+import random
+import json
 
 from pprint import pprint
 
@@ -52,21 +56,36 @@ class SQL_db_auditor():
     
   def audit_and_record_all_table_auditors(self):
     
+    database_info = dict() # collecting all self.info from each table auditor
+    
     # audit each table
     for this_table_auditor in self.table_auditor_list:
       # audit this table
       this_table_auditor.audit_schema()
     
+      pickle_db_dir = os.path.join(self.params['pickle_dir'], self.database)
+            
       # pickle this table auditor into pre-defined output directory
-      pickle_filepath = os.path.join(self.params['pickle_dir'], self.database, this_table_auditor.table_name+'.p')
-      pprint(pickle_filepath)
+      if not os.path.exists(pickle_db_dir):
+        os.makedirs(pickle_db_dir)
+        
+      pickle_filepath = os.path.join(pickle_db_dir, this_table_auditor.table_name+'.p')
+
       with open(pickle_filepath, 'wb') as fid:
         this_table_auditor.engine = None
+        this_table_auditor.session = None
         pickle.dump(this_table_auditor, fid)    
     
-    
+      pprint('Save table info: ' + pickle_filepath)
+      
+      # collect general information from self.info
+      database_info[this_table_auditor.table_name] = this_table_auditor.info
+      
 
 
+    # output general information JSON file
+    with open(os.path.join(self.params['pickle_dir'], 'all_table_info.json'), 'w') as fid:
+      json.dump(database_info, fid, indent=4)
 
 
 
@@ -78,6 +97,9 @@ class SQL_table_auditor():
   def __init__(self, engine, params, table_name):
     
     self.engine = engine
+    Session = sessionmaker(bind=self.engine)
+    self.session = Session()
+
     self.table_name = table_name
     self.params = params
     
@@ -85,10 +107,18 @@ class SQL_table_auditor():
     self.pk = list()
     self.uk = list()
     
+    
     # table related information
     self.column_distinct_values = dict()
-
+    self.column_row_cnt = dict() # the number of rows at time of fetching SELECT for a column. Therefore, different column
+                                 # may have slightly different number of rows
     
+    self.info = dict() # general information about the table
+  
+  
+  
+  
+  
   
   def audit_schema(self):
 
@@ -115,14 +145,19 @@ class SQL_table_auditor():
       for this_constraint in unique_constraints:
         self.uk.extend(this_constraint['column_names'])
 
-    pprint('Primary keys are: ')
+    print('Primary keys are: ')
     pprint(self.pk)
-    pprint('Unique keys are: ')
+    print('Unique keys are: ')
     pprint(self.uk)
-    
     
     # find distinct values of each column
     self.find_distinct_value()
+    
+    # find general table information
+    self.find_table_info()
+    
+    
+    
     
     
     
@@ -136,7 +171,6 @@ class SQL_table_auditor():
       this_column = self.sql_table.columns[this_column_key]
       
       if type(this_column.type) not in self.params['foreign_key_types']:
-        pprint(this_column)
         continue
         
       query = db.select([this_column])
@@ -149,4 +183,82 @@ class SQL_table_auditor():
       result_set = result_proxy.fetchall()
     
       self.column_distinct_values[this_column_key] = [x.values()[0] for x in result_set]
+      self.column_row_cnt[this_column_key] = len(result_set)
+  
+  
+  
+       
+  def find_table_info(self):
+  
+    # output a JSON file containing table information
+    json_dict = dict()
+    
+    ### acquire general information about the table
+    # total row numbers
+    self.info['total_row'] = self.session.query(self.sql_table).count()
+    
+    # column names, types
+    self.info['column_names'] = list()
+    self.info['column_data_types'] = list()
+    self.info['column_key_types'] = list()
+    
+    for this_column_key in self.sql_table.columns.keys():
+      this_column = self.sql_table.columns[this_column_key]
+      
+      self.info['column_names'].append(this_column_key)
+      self.info['column_data_types'].append(str(this_column.type))
+      
+      if this_column.primary_key:
+        this_key_type = 'Primary'
+      else:
+        this_key_type = ''
+      
+      self.info['column_key_types'].append(this_key_type)
+                    
+    # randomly sample 5 rows
+    #self.info['rand_samples'] = self.session.query(self.sql_table).order_by(func.rand()).limit(5).all()
+    self.info['rand_samples'] = list()
+    for this_row in self.session.query(self.sql_table).order_by(func.rand()).limit(5).all():
+      self.info['rand_samples'].append([str(x) for x in this_row])
+        
+    # unique # of values, range of values, etc.
+    self.info['unique_values'] = list()
+    self.info['unique_values_count'] = list()
+    self.info['unique_values_range'] = list()
+    
+    for this_column_key in self.sql_table.columns.keys():
+      this_column = self.sql_table.columns[this_column_key]
+    
+      if this_column_key in self.column_distinct_values:
+        # this column's distinct values are already calculated
+        # pick at most 5 distinct values as example
+        self.info['unique_values'].append([str(x) for x in self.column_distinct_values[this_column_key][:5]])
+        self.info['unique_values_count'].append(len(self.column_distinct_values[this_column_key]))
+        
+        distinct_values = self.column_distinct_values[this_column_key]
+      
+      else:
+        # this column is not eligible for distinct values
+        self.info['unique_values'].append([])
+        self.info['unique_values_count'].append([])
+        
+        min_var = self.session.query(this_column).order_by(desc(this_column)).limit(1).all()
+        if min_var: min_var = min_var[0]
+           
+        max_var = self.session.query(this_column).order_by(asc(this_column)).limit(1).all()
+        if max_var: max_var = max_var[0]
+        
+        distinct_values = [min_var, max_var]
+
+      # determine range of values for Datetime and numeric types
+      try:
+        self.info['unique_values_range'].append([str(min(distinct_values)), str(max(distinct_values))])
+      except:
+        self.info['unique_values_range'].append([])
+      
+    
+    #if self.table_name == 'fileperm':
+    #  code.interact(local=locals())
+    
+    
     
