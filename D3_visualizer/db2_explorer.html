@@ -7,44 +7,40 @@
 
 </head>
 
-<style>
-
-.node circle {
-  fill: #fff;
-  stroke: steelblue;
-  stroke-width: 3px;
-}
-
-.node text {
-  font: 12px sans-serif;
-}
-
-.link {
-  fill: none;
-  stroke: #ccc;
-  stroke-width: 2px;
-}
-
-</style>
 <body>
 
 <div class="row">
-<div class="column">
+<div class="column left">
+
+<div>
+<select id="table_select" onchange="table_change_2('')"></select>
+  <table class="d3_header" style="width:760px">
+    <tr>
+      <th bgcolor="#33DBFF">Table A</th>
+      <th bgcolor="#33DBFF">Columns</th>
+      <th bgcolor="#FF5733">Connected Tables</th>
+      <th bgcolor="#FF5733">Columns</th>
+    </tr>
+  </table>
+
+</div>
+
+<div id="d3_column">
 <script src="d3/d3.js"></script>
 <script>
 
 // Set the dimensions and margins of the diagram
-var margin = {top: 20, right: 90, bottom: 30, left: 90},
+var margin = {top: 20, right: 100, bottom: 30, left: 100},
     width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+    height = 5000 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
 // appends a 'group' element to 'svg'
 // moves the 'group' element to the top left margin
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#d3_column").append("svg")
     .attr("width", width + margin.right + margin.left)
     .attr("height", height + margin.top + margin.bottom)
-  .append("g")
+    .append("g")
     .attr("transform", "translate("
           + margin.left + "," + margin.top + ")");
 
@@ -53,21 +49,54 @@ var i = 0,
     root;
 
 // declares a tree layout and assigns the size
-var treemap = d3.tree().size([height, width]);
+var treemap = d3.tree().size([height, width]),
+    treeData,
+    allTableInfoData,
+    schemaData,
+    connectData,
+    previous_table_name = "";
 
 // Assigns parent, children, height, depth
 
-d3.json("sql_schema_data.json").then(function(treeData) {
-  root = d3.hierarchy(treeData, function(d) { return d.children; });
-  root.x0 = height / 2;
-  root.y0 = 0;
-  
-  // Collapse after the second level
-  console.log(Object.getOwnPropertyNames(root.children))
-  root.children.forEach(collapse);
+const connectRequest = async() => {await d3.json("d3_connect_data.json").then(function(in_connectData) {
+    connectData = in_connectData
+  })
+};
 
-  update(root);
-});
+
+const allTableInfoDataRequest = async() => {await d3.json("all_table_info.json").then(function(in_allTableInfoData) {
+    allTableInfoData = in_allTableInfoData
+  })
+};
+
+const schemaRequest = async() => {await d3.json("d3_schema_data.json").then(function(in_schemaData) {
+    schemaData = in_schemaData;
+
+    // populate the table select menu
+    table_select = document.getElementById("table_select");
+    
+    table_name_list = Object.keys(schemaData)
+    for (this_table in table_name_list) {
+      this_el = document.createElement("option");
+      this_el.textContent = table_name_list[this_table];
+      this_el.value = table_name_list[this_table];
+      
+      table_select.appendChild(this_el);
+    }
+    
+    root = d3.hierarchy(schemaData[Object.keys(schemaData)[0]], function(d) { return d.children; });
+    root.x0 = height / 2;
+    root.y0 = 0;
+    
+    update(root);
+    
+    click(root.children[0]);
+    //click(root.children[0]);
+  })
+};
+
+// chain actions
+connectRequest().then(allTableInfoDataRequest).then(schemaRequest);
 
 // Collapse the node and all it's children
 function collapse(d) {
@@ -78,18 +107,250 @@ function collapse(d) {
   }
 }
 
-function update(source) {
+// Table_A/Col_A change select
+function table_change_2(selected_column_name) {
+  table_select = document.getElementById("table_select");
+  selected_table_name = table_select.options[table_select.selectedIndex].value;
+  
+  root = d3.hierarchy(schemaData[selected_table_name], function(d) { return d.children; });
+  root.x0 = height / 2;
+  root.y0 = 0;
+  console.log('--------------')  
+  console.log(schemaData)
+  reset_schemaData();
+  console.log(schemaData)
+  console.log('--------------')
+  
+  new_children = [];
+  for (this_key in schemaData) {
+    if (this_key != selected_table_name) {
+      new_children.push(schemaData[this_key])
+    }
+  }
+  
+  selected_key = 0
+  for (this_key in schemaData[selected_table_name]["children"]) {
+    this_child = schemaData[selected_table_name]["children"][this_key];
+      
+    if (this_child["name"] == selected_column_name) {
+      selected_key = this_key
+    }   
+  }
+    
+  // attach list of Table_Bs to Col_A's first child
+  console.log(root)
+  root.data.children[selected_key]["children"] = new_children
+  
+  update(root);  
+  //click(root.children[0]);
+  console.log("zzzzzzzzzzzzzzzzz")   
+  console.log(schemaData)
 
+};
+
+
+function reset_schemaData() {
+  // reset the schemaData by removing all Col_A's children
+  for (this_key in schemaData) {
+    table_A = schemaData[this_key]
+    
+    // make all col_A visiable
+    if ("_children" in table_A) {
+      if (table_A._children) {
+        // make Table_A's children, Col_A visiable
+        table_A.children = table_A._children
+        table_A._children = null
+      } 
+    }
+    
+    // Remove all col_A's children
+    for (this_child_index in table_A.children) {
+      if ("children" in table_A.children[this_child_index]) {
+        table_A.children[this_child_index].children = null      
+      }
+      if ("_children" in table_A.children[this_child_index]) {
+        table_A.children[this_child_index]._children = null      
+      }      
+    
+    }
+
+  }
+}
+
+function table_change(selected_column_name) {
+  table_select = document.getElementById("table_select");
+  selected_table_name = table_select.options[table_select.selectedIndex].value;
+
+  // remove the current Col_A -> Table_B attachment by clearing
+  // all Table A's children's children
+  selected_key = null
+  
+  if (previous_table_name != "") {
+    // regular clicks
+    for (this_key in schemaData[previous_table_name]["children"]) {
+      this_child = schemaData[previous_table_name]["children"][this_key];
+      this_child["children"] = null;
+      
+      if (this_child["name"] == selected_column_name) {
+        selected_key = this_key
+      }   
+    }
+
+    
+  } else if (selected_column_name != "") {
+    // first time click with selected Col_A name
+    for (this_key in schemaData[selected_table_name]["children"]) {
+      this_child = schemaData[selected_table_name]["children"][this_key];
+      if (this_child["name"] == selected_column_name) {
+        selected_key = this_key
+      }
+    }     
+  }
+      
+  // based on the selected table, re-construct the tree graph
+  new_schema = schemaData[selected_table_name];
+  
+  new_children = [];
+  for (this_key in schemaData) {
+    if (this_key != selected_table_name) {
+      new_children.push(schemaData[this_key])
+    }
+  }
+  
+
+  if (selected_key) {
+    new_schema["children"][selected_key]["children"] = new_children;
+  } else {
+    // no key explicitly selected. Likely a change in menu
+    console.log('empty selected key')
+    console.log(new_schema)
+    if ("_children" in new_schema) {
+      new_schema["children"] = new_schema["_children"]
+      new_schema["_children"] = null
+    } else {
+      new_schema["children"][0]["children"] = new_children;  
+    }
+    console.log(new_schema)
+    console.log('empty selected key')
+  }
+  
+  update(root);
+  
+          
+  previous_table_name = selected_table_name;
+  
+} // END of function table_change()
+
+
+
+
+
+
+function update(source) {
+  console.log("Function: update")
+  
+  table_select = document.getElementById("table_select");
+  selected_table_name = table_select.options[table_select.selectedIndex].value;
+  root = d3.hierarchy(schemaData[selected_table_name], function(d) { return d.children; });
+    
   // Assigns the x and y position for the nodes
   var treeData = treemap(root);
 
   // Compute the new tree layout.
   var nodes = treeData.descendants(),
       links = treeData.descendants().slice(1);
+      
+  nodes.forEach(function(d){
 
+        connected_color = 1;
+        unconnected_color = 0;
+
+        link_color = unconnected_color;
+        
+        if (d.depth == 1) {
+          // Table_A -> Col_A connection
+          // lights up only the selected
+
+          // color Col_A to Table_B connection
+          root_name = d.parent.data.name;
+          col_A = d.data.name;
+          
+          link_color = unconnected_color;
+          if (root_name in connectData) {
+            if (col_A in connectData[root_name]) {
+              link_color = connected_color;
+            }
+          }
+                    
+        } else if (d.depth == 2) {
+          // color Col_A to Table_B connection
+          root_name = d.parent.parent.data.name;
+          col_A = d.parent.data.name;
+          table_B = d.data.name;
+          
+          link_color = unconnected_color;
+          if (root_name in connectData) {
+            if (col_A in connectData[root_name]) {
+              if (table_B in connectData[root_name][col_A]) {
+                link_color = connected_color;
+              }
+            }
+          }
+          
+          
+        } else if (d.depth == 3) {
+          // color Table_B to Col_B connection
+          root_name = d.parent.parent.parent.data.name;
+          col_A = d.parent.parent.data.name;
+          table_B = d.parent.data.name;
+          col_B = d.data.name;
+          
+          link_color = unconnected_color;
+          if (root_name in connectData) {
+            if (col_A in connectData[root_name]) {
+              if (table_B in connectData[root_name][col_A]) {
+                if (connectData[root_name][col_A][table_B].includes(col_B)) {
+                  link_color = connected_color;
+                }
+              }
+            }
+          }
+        }
+
+        d.data.priority = link_color;
+
+      	return;}
+      );
+  // set priority of each node
+
+  root.sort(function(a,b){
+    return d3.descending(a.data.priority, b.data.priority);
+  });
+        
   // Normalize for fixed-depth.
-  nodes.forEach(function(d){ d.y = d.depth * 180});
+  
+  nodes.forEach(function(d) { //iterate through the nodes
+    if(d.parent){ //if the node has a parent
 
+      for(var i = 0; i < d.parent.children.length; i++){ //check parent children
+        if(d.parent.children[i].data.name == d.data.name){ //find current node
+          d.yOffset = i; //index is how far node must be moved down
+          d.parentYoffset = d.parent.yOffset; //must also account for parent downset
+
+          if (d.parent.parentYoffset) {
+              d.parentYoffset += d.parent.parentYoffset;
+          }
+        }
+      }
+    }
+    if(d.yOffset === undefined){ d.yOffset = 0; }
+    if(d.parentYoffset === undefined){ d.parentYoffset = 0; }
+    d.x = (d.yOffset * 40) + (d.parentYoffset * 40) ;
+    d.y = d.depth * 200;
+  }); 
+  
+  nodes.forEach(function(d){ d.y = d.depth * 180});
+  
   // ****************** Nodes section ***************************
 
   // Update the nodes...
@@ -129,7 +390,7 @@ function update(source) {
   // Transition to the proper position for the node
   nodeUpdate.transition()
     .duration(duration)
-    .attr("transform", function(d) { 
+    .attr("transform", function(d) {
         return "translate(" + d.y + "," + d.x + ")";
      });
 
@@ -137,7 +398,7 @@ function update(source) {
   nodeUpdate.select('circle.node')
     .attr('r', 10)
     .style("fill", function(d) {
-        return d._children ? "lightsteelblue" : "#fff";
+        return d.data.children ? "lightsteelblue" : "#fff";
     })
     .attr('cursor', 'pointer');
 
@@ -170,7 +431,64 @@ function update(source) {
       .attr('d', function(d){
         var o = {x: source.x0, y: source.y0}
         return diagonal(o, o)
-      });
+      })
+      .attr("stroke", function(d){
+
+        connected_color = "#1ABC9C";
+        unconnected_color = "#CCCCCC";
+        
+        if (d.depth == 1) {
+          // Table_A -> Col_A connection
+          // lights up only the selected
+
+          // color Col_A to Table_B connection
+          root_name = d.parent.data.name;
+          col_A = d.data.name;
+          
+          link_color = unconnected_color;
+          if (root_name in connectData) {
+            if (col_A in connectData[root_name]) {
+              link_color = connected_color;
+            }
+          }
+                    
+        } else if (d.depth == 2) {
+          // color Col_A to Table_B connection
+          root_name = d.parent.parent.data.name;
+          col_A = d.parent.data.name;
+          table_B = d.data.name;
+          
+          link_color = unconnected_color;
+          if (root_name in connectData) {
+            if (col_A in connectData[root_name]) {
+              if (table_B in connectData[root_name][col_A]) {
+                link_color = connected_color;
+              }
+            }
+          }
+          
+          
+        } else if (d.depth == 3) {
+          // color Table_B to Col_B connection
+          root_name = d.parent.parent.parent.data.name;
+          col_A = d.parent.parent.data.name;
+          table_B = d.parent.data.name;
+          col_B = d.data.name;
+          
+          link_color = unconnected_color;
+          if (root_name in connectData) {
+            if (col_A in connectData[root_name]) {
+              if (table_B in connectData[root_name][col_A]) {
+                if (connectData[root_name][col_A][table_B].includes(col_B)) {
+                  link_color = connected_color;
+                }
+              }
+            }
+          }
+        }
+
+      	return link_color;}
+      );
 
   // UPDATE
   var linkUpdate = linkEnter.merge(link);
@@ -206,113 +524,204 @@ function update(source) {
     return path
   }
 
-  // Toggle children on click.
-  // If the click is on
-  //     depth = 0: Root. Nothing happens
-  //     depth = 1: Columns. Toggle it but collapse all others.
-  function click(d) {
-    if (d.depth == 0) {
-      // depth = 0: Root. Do nothing
-      removeTable('t1', d.data.sample )
-      console.log(d)
-          
-    } else if (d.depth == 1) {
-      // depth = 1: Columns. Toggle it but collapse all others.
-      for (this_child_index in d.parent.children) {
-        // collapse each child
-        this_child = d.parent.children[this_child_index]
+} // END of function update()
+
+
+
+// Toggle children on click.
+// If the click is on
+
+function click(d) {
+  console.log("clicked")
+  console.log(d)
+  if (d.depth == 0) {
+    // depth = 0: Root. Do nothing
         
-        if (this_child.id == d.id) {
-          if (d.children) {
-            console.log("close branch")
-            d._children = d.children;
-            d.children = null;
-          } else {
-            d.children = d._children;
-            d._children = null;
-          }    
-              
-        } else {
-          if (this_child.children) {
-            this_child._children = this_child.children;
-            this_child.children = null;
-          }
+  } else if (d.depth == 1) {
+    // depth = 1: Columns. Load new data, toggle it but collapse all others.
+
+    table_change_2(d.data.name);
           
+    for (this_child_index in d.parent.children) {
+      // collapse each child
+      this_child = d.parent.children[this_child_index]
+      
+      if (this_child.id == d.id) {
+        // selected child (Col_A)
+        // always visiable
+        if (this_child.data._children) {
+          this_child.data.children = this_child.data._children;
+          this_child.data._children = null;
+        }   
+        
+        // select first connected table (Table_B) and
+        // display its columns (Col_B) 
+        if (this_child.data.children) {
+          this_child.data.children.forEach(collapse);
+        }
+                        
+      } else {
+        if (this_child.children) {
+          //this_child.children.forEach(collapse);
         }
       }
+    }
 
-      update(d.parent);
-           
-    } else {
-      // all other depths
-      if (d.children) {
-        d._children = d.children;
-        d.children = null;
+    update(d.parent);
+
+  } else if (d.depth == 2) {
+    // depth = 2: Columns. Load new data, toggle it but collapse all others.
+          
+    for (this_child_index in d.parent.children) {
+      // collapse each child
+      this_child = d.parent.children[this_child_index]
+
+      if (this_child.id == d.id) {
+
+        if (this_child.data.children) {
+          this_child.data._children = this_child.data.children;
+          this_child.data.children = null;
+        } else {
+          this_child.data.children = this_child.data._children;
+          this_child.data._children = null;
+        }    
+            
       } else {
-        d.children = d._children;
-        d._children = null;
+        if (this_child.data.children) {
+          this_child.data._children = this_child.data.children;
+          this_child.data.children = null;
+        }
+        
       }
-      update(d);
     }
     
+    update(d.parent);
 
+    // load new secondary tables
+    updateTable("t2", d.data.name)
+
+  } else {
+    // all other depths
+    if (d.children) {
+      d._children = d.children;
+      d.children = null;
+    } else {
+      d.children = d._children;
+      d._children = null;
+    }
+    update(d);
+  }
+
+} // END of function click()
+
+
+// Table operations
+function updateTable(html_table_ID, table_name) {
+  var this_table = document.getElementById(html_table_ID);
+  //var parentE1 = removeTab.parentElement;
+  //parentE1.removeChild(removeTab);
+  
+  if (html_table_ID == 't1') {
+    header_color = "#33DBFF";
+    
+  } else {
+    header_color = "#FF5733";
   }
   
+  this_column_name_list = allTableInfoData[table_name]["column_names"];
+  this_data_type_list   = allTableInfoData[table_name]["column_data_types"];
+  this_key_type_list    = allTableInfoData[table_name]["column_key_types"];
+  this_rand_samples     = allTableInfoData[table_name]["rand_samples"];
+    
+  // header
+  this_innerHTML = "<tr>"
+  for (index in this_column_name_list) {
+    this_innerHTML = this_innerHTML + "<th bgcolor='"+header_color+"'>" + this_column_name_list[index] +"</th>";
+  }
   
-  // Table operations
- function removeTable(table_ID, info) {
-   var removeTab = document.getElementById(table_ID);
-   var parentE1 = removeTab.parentElement;
-   parentE1.removeChild(removeTab);
-   
-   console.log(info)
- }
+  this_innerHTML = this_innerHTML + "</tr>";
   
-}
+  // key type
+  this_innerHTML = this_innerHTML + "<tr>";
+  for (index in this_key_type_list) {
+    this_innerHTML = this_innerHTML + "<td bgcolor='#000000'><font color='#fff'>" + this_key_type_list[index] +"</font></td>";
+  }
+  
+  this_innerHTML = this_innerHTML + "</tr>";
+      
+  // rows
+  for (index in this_rand_samples) {
+    this_innerHTML = this_innerHTML + "<tr>";
+    
+    for (col_index in this_rand_samples[index]) {
+      this_innerHTML = this_innerHTML + "<td>" + this_rand_samples[index][col_index]+ "</td>";      
+    }
+    
+    this_innerHTML = this_innerHTML + "</tr>";
+  }
+  
+  // data type
+  this_innerHTML = this_innerHTML + "<tr>";
+  for (index in this_data_type_list) {
+    this_innerHTML = this_innerHTML + "<td bgcolor='#000000'><font color='#fff'>" + this_data_type_list[index] +"</font></td>";
+  }
+  
+  this_innerHTML = this_innerHTML + "</tr>";
+  
+  // replace old table content
+  this_table.innerHTML = this_innerHTML;
+  
+  
+  // Update table name
+  document.getElementById(html_table_ID+"_table_name").innerHTML = "TABLE: "+table_name+" ("+allTableInfoData[table_name]["total_row"]+" rows)"
+  
+  // Update table summary
+  this_uv_list = allTableInfoData[table_name]["unique_values"];
+  this_uv_count_list = allTableInfoData[table_name]["unique_values_count"];
+  this_uv_range_list = allTableInfoData[table_name]["unique_values_range"];
+  
+  summaryHTML = "<tr>"
+               +"<th></th>" 
+               +"<th>#</th>"
+               +"<th>Min.</th>" 
+               +"<th>Max.</th>"
+               +"<th>Unique values (display up to 5)</th>" 
+               +"</tr>";
+  for (index in this_uv_list) {
+    summaryHTML = summaryHTML + "<tr>";
+    summaryHTML = summaryHTML + "<td>" + this_column_name_list[index] +"</td>";
+    summaryHTML = summaryHTML + "<td>" + this_uv_count_list[index] +"</td>";
+    summaryHTML = summaryHTML + "<td>" + this_uv_range_list[index][0] +"</td>";
+    summaryHTML = summaryHTML + "<td>" + this_uv_range_list[index][1] +"</td>";
+    summaryHTML = summaryHTML + "<td>" + this_uv_list[index].join(", ") +"</td>";
+    summaryHTML = summaryHTML + "</tr>";
+  }
 
+  document.getElementById(html_table_ID+"_stats").innerHTML = summaryHTML;
+
+}
 </script>
+</div>
 </div>
 
 
 
 
+<div class="column right">
 
-<div class="column">
-<table id="t1" style="width:100%">
-  <tr>
-    <th>Firstname</th>
-    <th>Lastname</th>
-    <th>Age</th>
-  </tr>
-  <tr>
-    <td>Jill</td>
-    <td>Smith</td>
-    <td>50</td>
-  </tr>
-  <tr>
-    <td>Eve</td>
-    <td>Jackson</td>
-    <td>94</td>
-  </tr>
-</table>
+<h4 id="t1_table_name" style="color:#33DBFF">Sample rows</h4>
+<table id="t1" style="width:100%"></table>
+<h4>Table statistics</h4>
+<table id="t1_stats" style="width:100%"></table>
+<hr>
 
-<table id="t2" style="width:100%">
-  <tr>
-    <th>Firstname</th>
-    <th>Lastname</th>
-    <th>Age</th>
-  </tr>
-  <tr>
-    <td>Jill</td>
-    <td>Smith</td>
-    <td>50</td>
-  </tr>
-  <tr>
-    <td>Eve</td>
-    <td>Jackson</td>
-    <td>94</td>
-  </tr>
-</table>
+<h4 id="t2_table_name" style="color:#FF5733">Sample Rows</h4>
+<table id="t2" style="width:100%"></table>
+<h4>Table statistics</h4>
+<table id="t2_stats" style="width:100%"></table>
+
+<h4>Table statistics</h4>
+
 </div>
 </div>
 </body>

@@ -1,14 +1,16 @@
 body {
   background: url(texture-noise.png);
-  overflow: hidden;
   margin: 0;
   font-size: 14px;
   font-family: "Helvetica Neue", Helvetica;
+  height: 100%;
 }
 
 #chart, #header, #footer {
   position: absolute;
   top: 0;
+  overflow:scroll;
+  height: 100%;
 }
 
 #header, #footer {
@@ -71,6 +73,22 @@ line {
   color: #1181B8;
 }
 
+.node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 3px;
+}
+
+.node text {
+  font: 12px sans-serif;
+}
+
+.link {
+  fill: none;
+
+  stroke-width: 2px;
+}
+
 a:link, a:visited {
   color: #000;
   text-decoration: none;
@@ -89,10 +107,47 @@ a:hover {
 }
 
 /* Split the screen in half */
-.row {
-  display: flex;
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .column {
-  flex: 50%;
+  float:left;
+  overflow: scroll;
 }
+
+.left {
+  width: 50%;
+  height: 800px;
+  overflow: scroll;
+}
+
+.right {
+  width: 50%;
+  height: 800px;
+  overflow: scroll;
+}
+
+/* Header table layout */
+.d3_header {
+  table-layout: fixed;
+  width: 100% ;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+}
+
+table td, table th {
+  border: 1px;
+  padding-left: 8px;
+}
+
+table tr:nth-child(even){background-color: #f2f2f2;}
+
+table tr:hover {background-color: #ddd;}
+

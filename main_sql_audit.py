@@ -19,80 +19,16 @@ from sqlalchemy.orm import sessionmaker
 
 from class_sql_auditor import SQL_db_auditor
 
-from main_foreign_key_match import main_foreign_key_match
+
 from class_custom_tables import *
-
-
-
-
-  
-def get_dict_from_db2(inparam, db_name, table_name, column_name_list, index_column_name_list):
-  engine = create_engine('mysql+pymysql://'+inparam['DB2_SQL_CRED_USR']+':'+inparam['DB2_SQL_CRED_PSW'] \
-                                         +'@'+inparam['DB2_SQL_addr']+':'+inparam['DB2_SQL_port']+'/'+db_name)  
-
-  code.interact(local=locals())
-  
-  if not database_exists(db2_nanohub_engine.url):
-    logging.error('DB2 Database '+str(db2_nanohub_engine.url)+' does not exist! Please create it first.')
-
-  connection = db2_nanohub_engine.connect()
-  metadata = db.MetaData()
-
-  if table_name == 'jos_users':
-  # id, name, username, registerDate, lastvisitDate
-    sql_table = db.Table(table_name, metadata,
-         db.Column('id', db.Integer, primary_key=True),
-         db.Column('name', db.String(255)),
-         db.Column('username', db.String(255)),
-         db.Column('email', db.String(255)),
-         db.Column('registerDate', db.DateTime),
-         db.Column('lastvisitDate', db.DateTime)
-      )
-    query = db.select([sql_table.c.id, sql_table.c.name, sql_table.c.username, sql_table.c.email, \
-                     sql_table.c.registerDate, sql_table.c.lastvisitDate])
-    
-  else:
-    sql_table = db.Table(table_name, metadata, autoload=True, autoload_with=db2_nanohub_engine)
-    query = db.select([sql_table])
-      
-  result_proxy = connection.execute(query)
-  result_set = result_proxy.fetchall()
-
-  # form a dictionary
-  this_dict = dict()
-
-  for this_index_column_name in index_column_name_list:
-    for this_result in result_set:
-      this_key = this_result.__getitem__(this_index_column_name)
-      
-      if not this_key:
-        continue
-        
-      if not isinstance(this_key, int):
-        # key is always all lower-case or numeric
-        this_key = this_key.lower()
-        
-      this_dict[this_key] = dict()    
-
-      for this_column_name in column_name_list:
-        this_dict[this_key][this_column_name] = this_result.__getitem__(this_column_name)
-
-
-  return this_dict
+from main_foreign_key_match import main_foreign_key_match
+from main_generate_audit_report import main_generate_audit_report
     
   
   
   
 def main_sql_audit(inparam, db_name, db_params):
 
-  ### Load some DB2 support tables into dict
-  #   Due to much information are embedded in unstructured data such as URL in web,
-  #   we cannot do a simple join of tables in SQL. Instead, we have to look information up
-  #   individually
-  #support_table_dict = dict()
-
-  # TABLE: email
-  #support_table_dict['bc_users_id_username_email_dict'] = get_dict_from_db2(inparam, 'nanohub', 'jos_users', ['email', 'id'], ['id', 'username'])  
   engine = create_engine('mysql+pymysql://'+inparam['DB2_SQL_CRED_USR']+':'+inparam['DB2_SQL_CRED_PSW'] \
                                          +'@'+inparam['DB2_SQL_addr']+':'+inparam['DB2_SQL_port']+'/'+db_name)  
   
@@ -142,7 +78,8 @@ if __name__ == '__main__':
   db_params = dict()
   
   db_params['pickle_dir'] = '/scratch/halstead/w/wang159/db2'
-  
+  db_params['d3_data_dir'] = '/home/wang159/nanoHUB/projects/DB2/SQL-database-audit/D3_visualizer'
+    
   db_params['sampling'] = -1
   
   db_params['special_table'] = dict()

@@ -152,8 +152,7 @@ def reduce_match_foreign_keys(key_map_1, key_map_2):
 def main_foreign_key_match(inparam, db_name, db_params):
   
   # collect all valid pickle file paths
-  db_params['pickle_dir'] = '/scratch/halstead/w/wang159/db2'
-  
+
   all_filepath_list = list()
   for this_filepath in glob.glob(os.path.join(db_params['pickle_dir'], db_name, '*.p')):
     #pprint(this_filepath)
@@ -180,4 +179,13 @@ def main_foreign_key_match(inparam, db_name, db_params):
  
     json.dump(foreign_keys_dict, fid, indent = 2)
   
+
+
+
+
+
+
+
+
+
 
