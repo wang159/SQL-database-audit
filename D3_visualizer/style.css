@@ -38,6 +38,10 @@ body {
   text-align: right;
 }
 
+#table_select {
+  width:207px;
+}
+
 rect {
   fill: none;
   pointer-events: all;
@@ -75,8 +79,8 @@ line {
 
 .node circle {
   fill: #fff;
-  stroke: steelblue;
-  stroke-width: 3px;
+  stroke: black;
+  stroke-width: 2px;
 }
 
 .node text {

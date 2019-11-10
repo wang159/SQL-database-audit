@@ -13,10 +13,10 @@
 <div class="column left">
 
 <div>
+<Strong>Table:</Strong>
 <select id="table_select" onchange="table_change_2('')"></select>
   <table class="d3_header" style="width:760px">
     <tr>
-      <th bgcolor="#33DBFF">Table A</th>
       <th bgcolor="#33DBFF">Columns</th>
       <th bgcolor="#FF5733">Connected Tables</th>
       <th bgcolor="#FF5733">Columns</th>
@@ -30,7 +30,7 @@
 <script>
 
 // Set the dimensions and margins of the diagram
-var margin = {top: 20, right: 100, bottom: 30, left: 100},
+var margin = {top: 20, right: 100, bottom: 30, left: -150},
     width = 960 - margin.left - margin.right,
     height = 5000 - margin.top - margin.bottom;
 
@@ -90,7 +90,7 @@ const schemaRequest = async() => {await d3.json("d3_schema_data.json").then(func
     
     update(root);
     
-    click(root.children[0]);
+    //click(root.children[0]);
     //click(root.children[0]);
   })
 };
@@ -115,11 +115,8 @@ function table_change_2(selected_column_name) {
   root = d3.hierarchy(schemaData[selected_table_name], function(d) { return d.children; });
   root.x0 = height / 2;
   root.y0 = 0;
-  console.log('--------------')  
-  console.log(schemaData)
+
   reset_schemaData();
-  console.log(schemaData)
-  console.log('--------------')
   
   new_children = [];
   for (this_key in schemaData) {
@@ -142,10 +139,10 @@ function table_change_2(selected_column_name) {
   root.data.children[selected_key]["children"] = new_children
   
   update(root);  
-  //click(root.children[0]);
-  console.log("zzzzzzzzzzzzzzzzz")   
-  console.log(schemaData)
+  click(root.data.children[selected_key]);
 
+  // update Table_A display
+  updateTable("t1", selected_table_name);
 };
 
 
@@ -345,11 +342,11 @@ function update(source) {
     }
     if(d.yOffset === undefined){ d.yOffset = 0; }
     if(d.parentYoffset === undefined){ d.parentYoffset = 0; }
-    d.x = (d.yOffset * 40) + (d.parentYoffset * 40) ;
+    d.x = (d.yOffset * 20) + (d.parentYoffset * 20) ;
     d.y = d.depth * 200;
   }); 
   
-  nodes.forEach(function(d){ d.y = d.depth * 180});
+  nodes.forEach(function(d){ d.y = d.depth * 250});
   
   // ****************** Nodes section ***************************
 
@@ -370,7 +367,18 @@ function update(source) {
       .attr('class', 'node')
       .attr('r', 1e-6)
       .style("fill", function(d) {
-          return d._children ? "lightsteelblue" : "#fff";
+          if (d._children) {
+            // selected
+            if (d.depth == 1) {
+              return "#33DBFF";       
+            } else {
+              return "#FF5733";
+            }
+            
+          } else {
+            // not selected
+            return "#FFFFFF";
+          }
       });
 
   // Add labels for the nodes
@@ -382,6 +390,7 @@ function update(source) {
       .attr("text-anchor", function(d) {
           return d.children || d._children ? "end" : "start";
       })
+      .style("font-weight", function(d) {return d.depth == 2 ? "bold":"regular";})
       .text(function(d) { return d.data.name; });
 
   // UPDATE
@@ -396,9 +405,20 @@ function update(source) {
 
   // Update the node attributes and style
   nodeUpdate.select('circle.node')
-    .attr('r', 10)
+    .attr('r', 6)
     .style("fill", function(d) {
-        return d.data.children ? "lightsteelblue" : "#fff";
+          if (d.data.children) {
+            // selected
+            if (d.depth == 1) {
+              return "#33DBFF";       
+            } else {
+              return "#FF5733";
+            }
+            
+          } else {
+            // not selected
+            return "#FFFFFF";
+          }
     })
     .attr('cursor', 'pointer');
 
@@ -435,22 +455,12 @@ function update(source) {
       .attr("stroke", function(d){
 
         connected_color = "#1ABC9C";
-        unconnected_color = "#CCCCCC";
+        unconnected_color = "#EEEEEE";
+        no_color = "#FFFFFF";
         
         if (d.depth == 1) {
           // Table_A -> Col_A connection
-          // lights up only the selected
-
-          // color Col_A to Table_B connection
-          root_name = d.parent.data.name;
-          col_A = d.data.name;
-          
-          link_color = unconnected_color;
-          if (root_name in connectData) {
-            if (col_A in connectData[root_name]) {
-              link_color = connected_color;
-            }
-          }
+          link_color = no_color;
                     
         } else if (d.depth == 2) {
           // color Col_A to Table_B connection
@@ -536,12 +546,12 @@ function click(d) {
   console.log(d)
   if (d.depth == 0) {
     // depth = 0: Root. Do nothing
-        
+            
   } else if (d.depth == 1) {
     // depth = 1: Columns. Load new data, toggle it but collapse all others.
 
     table_change_2(d.data.name);
-          
+              
     for (this_child_index in d.parent.children) {
       // collapse each child
       this_child = d.parent.children[this_child_index]
@@ -620,6 +630,9 @@ function updateTable(html_table_ID, table_name) {
   var this_table = document.getElementById(html_table_ID);
   //var parentE1 = removeTab.parentElement;
   //parentE1.removeChild(removeTab);
+  
+  console.log(table_name)
+  console.log(allTableInfoData)
   
   if (html_table_ID == 't1') {
     header_color = "#33DBFF";
@@ -711,16 +724,14 @@ function updateTable(html_table_ID, table_name) {
 
 <h4 id="t1_table_name" style="color:#33DBFF">Sample rows</h4>
 <table id="t1" style="width:100%"></table>
-<h4>Table statistics</h4>
+<h4>Unique values statistics</h4>
 <table id="t1_stats" style="width:100%"></table>
 <hr>
 
 <h4 id="t2_table_name" style="color:#FF5733">Sample Rows</h4>
 <table id="t2" style="width:100%"></table>
-<h4>Table statistics</h4>
+<h4>Unique Values statistics</h4>
 <table id="t2_stats" style="width:100%"></table>
-
-<h4>Table statistics</h4>
 
 </div>
 </div>
