@@ -1,0 +1,2869 @@
+{
+    "app": {
+        "total_row": 28,
+        "column_names": [
+            "appname",
+            "geometry",
+            "depth",
+            "hostreq",
+            "userreq",
+            "timeout",
+            "command",
+            "description"
+        ],
+        "column_data_types": [
+            "VARCHAR(80)",
+            "VARCHAR(9)",
+            "SMALLINT(5) UNSIGNED",
+            "BIGINT(20) UNSIGNED",
+            "BIGINT(20) UNSIGNED",
+            "INTEGER(10) UNSIGNED",
+            "VARCHAR(255)",
+            "VARCHAR(255)"
+        ],
+        "column_key_types": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "rand_samples": [
+            [
+                "nanowire",
+                "700x500",
+                "24",
+                "8",
+                "0",
+                "86400",
+                "/apps/nanowire/invoke",
+                "Nanowire simulator"
+            ],
+            [
+                "padre",
+                "700x500",
+                "24",
+                "8",
+                "0",
+                "86400",
+                "/apps/padre/invoke",
+                "padre"
+            ],
+            [
+                "workspace",
+                "800x600",
+                "24",
+                "4",
+                "0",
+                "1209600",
+                "/apps/workspace/invoke",
+                "Workspace (800x600)"
+            ],
+            [
+                "cenems",
+                "650x510",
+                "24",
+                "8",
+                "0",
+                "86400",
+                "/apps/cenems/invoke",
+                "cenems"
+            ],
+            [
+                "msl",
+                "1150x800",
+                "24",
+                "8",
+                "0",
+                "86400",
+                "/apps/msl/invoke",
+                "MSL"
+            ]
+        ],
+        "unique_values": [
+            [
+                "xterm",
+                "spice3f4",
+                "qdot",
+                "workspace",
+                "workspace-big"
+            ],
+            [
+                "640x480",
+                "600x600",
+                "800x600",
+                "1150x750",
+                "1000x750"
+            ],
+            [
+                "24"
+            ],
+            [
+                "4",
+                "8"
+            ],
+            [
+                "0"
+            ],
+            [
+                "86400",
+                "1209600"
+            ],
+            [
+                "xterm",
+                "/apps/spice3f4/invoke",
+                "/apps/qdot/invoke",
+                "/apps/workspace/invoke",
+                "/apps/nanowire/invoke"
+            ],
+            [
+                "X Terminal",
+                "Spice v3f4",
+                "QDot",
+                "Workspace (800x600)",
+                "Workspace (1150x750)"
+            ]
+        ],
+        "unique_values_count": [
+            28,
+            19,
+            1,
+            2,
+            1,
+            2,
+            26,
+            28
+        ],
+        "unique_values_range": [
+            [
+                "cenems",
+                "xterm"
+            ],
+            [
+                "1000x600",
+                "910x640"
+            ],
+            [
+                "24",
+                "24"
+            ],
+            [
+                "4",
+                "8"
+            ],
+            [
+                "0",
+                "0"
+            ],
+            [
+                "86400",
+                "1209600"
+            ],
+            [
+                "/apps/cenems/invoke",
+                "xterm"
+            ],
+            [
+                "CNTbands",
+                "schred"
+            ]
+        ]
+    },
+    "display": {
+        "total_row": 863,
+        "column_names": [
+            "hostname",
+            "dispnum",
+            "geometry",
+            "depth",
+            "sessnum",
+            "vncpass",
+            "status"
+        ],
+        "column_data_types": [
+            "VARCHAR(40)",
+            "INTEGER(10) UNSIGNED",
+            "VARCHAR(9)",
+            "SMALLINT(5) UNSIGNED",
+            "BIGINT(20) UNSIGNED",
+            "VARCHAR(16)",
+            "VARCHAR(20)"
+        ],
+        "column_key_types": [
+            "Primary",
+            "Primary",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "rand_samples": [
+            [
+                "exec030.nanohub.org",
+                "53",
+                "1024x768",
+                "24",
+                "0",
+                "5e4f351dc6ade9fb",
+                "absent"
+            ],
+            [
+                "exec023",
+                "64",
+                "1024x768",
+                "24",
+                "0",
+                "3ba72254c479b8d4",
+                "ready"
+            ],
+            [
+                "exec027",
+                "40",
+                "850x550",
+                "24",
+                "1544012",
+                "18b93666b018fe89",
+                "used"
+            ],
+            [
+                "exec029",
+                "58",
+                "780x600",
+                "24",
+                "0",
+                "e12fa5ba5b7f4b37",
+                "absent"
+            ],
+            [
+                "exec026",
+                "36",
+                "700x520",
+                "24",
+                "1540647",
+                "2dbcfc12fe7482d8",
+                "used"
+            ]
+        ],
+        "unique_values": [
+            [
+                "exec020",
+                "exec021",
+                "exec022",
+                "exec023",
+                "exec024"
+            ],
+            [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+            ],
+            [
+                "1024x768",
+                "780x600",
+                "740x600",
+                "850x550",
+                "800x450"
+            ],
+            [
+                "24"
+            ],
+            [
+                "1543149",
+                "1541234",
+                "1536352",
+                "1544129",
+                "1502951"
+            ],
+            [
+                "216b7cd8dd0e0dff",
+                "2863af67ec22083b",
+                "bf45757818058905",
+                "1057ce7d08916be2",
+                "c619e3c47f2199fe"
+            ],
+            [
+                "used",
+                "ready",
+                "absent"
+            ]
+        ],
+        "unique_values_count": [
+            12,
+            137,
+            48,
+            1,
+            429,
+            863,
+            3
+        ],
+        "unique_values_range": [
+            [
+                "exec020",
+                "exec032.nanohub.org"
+            ],
+            [
+                "1",
+                "137"
+            ],
+            [
+                "1000x600",
+                "960x720"
+            ],
+            [
+                "24",
+                "24"
+            ],
+            [
+                "0",
+                "1544157"
+            ],
+            [
+                "00d18b960834f32c",
+                "ffce0f23eca17a47"
+            ],
+            [
+                "absent",
+                "used"
+            ]
+        ]
+    },
+    "fileperm": {
+        "total_row": 428,
+        "column_names": [
+            "sessnum",
+            "fileuser",
+            "fwhost",
+            "fwport",
+            "cookie"
+        ],
+        "column_data_types": [
+            "BIGINT(20) UNSIGNED",
+            "VARCHAR(32)",
+            "VARCHAR(40)",
+            "SMALLINT(5) UNSIGNED",
+            "VARCHAR(16)"
+        ],
+        "column_key_types": [
+            "Primary",
+            "Primary",
+            "",
+            "",
+            ""
+        ],
+        "rand_samples": [
+            [
+                "1543795",
+                "devank",
+                "",
+                "0",
+                "vbDS7ipNPOMjkW9T"
+            ],
+            [
+                "1543877",
+                "poco20102018",
+                "",
+                "0",
+                "Z25ouOHoEbDzfZH5"
+            ],
+            [
+                "1543931",
+                "dorji48miji",
+                "",
+                "0",
+                "v7nq8dso9jS7VQcK"
+            ],
+            [
+                "1543737",
+                "prashilpatil99",
+                "",
+                "0",
+                "8P0QfIMiz3IjElnO"
+            ],
+            [
+                "1544140",
+                "smbannon",
+                "",
+                "0",
+                "EN8nRoACgwoZjpjx"
+            ]
+        ],
+        "unique_values": [
+            [
+                "1498829",
+                "1498881",
+                "1502951",
+                "1507488",
+                "1508011"
+            ],
+            [
+                "juri",
+                "gridstat",
+                "wang159",
+                "clarksm",
+                "apps"
+            ],
+            [
+                ""
+            ],
+            [
+                "0"
+            ],
+            [
+                "qgHo667qbhdnJNOX",
+                "YvCbMmrTdmp44kIq",
+                "ih6P6w5IpFvEkn0N",
+                "wS3KxHojJn2XPIiW",
+                "UtggF6BP2cYbmvT3"
+            ]
+        ],
+        "unique_values_count": [
+            428,
+            293,
+            1,
+            1,
+            428
+        ],
+        "unique_values_range": [
+            [
+                "1498829",
+                "1544157"
+            ],
+            [
+                "20anand.abhi",
+                "ztking"
+            ],
+            [
+                "",
+                ""
+            ],
+            [
+                "0",
+                "0"
+            ],
+            [
+                "0402osHNCURZFVG2",
+                "zgNCyggNO6IvPFbI"
+            ]
+        ]
+    },
+    "host": {
+        "total_row": 13,
+        "column_names": [
+            "hostname",
+            "provisions",
+            "status",
+            "uses",
+            "portbase",
+            "zone_id",
+            "max_uses",
+            "first_display"
+        ],
+        "column_data_types": [
+            "VARCHAR(40)",
+            "BIGINT(20) UNSIGNED",
+            "VARCHAR(20)",
+            "INTEGER(11)",
+            "INTEGER(11)",
+            "INTEGER(11)",
+            "INTEGER(11)",
+            "INTEGER(11)"
+        ],
+        "column_key_types": [
+            "Primary",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "rand_samples": [
+            [
+                "exec022",
+                "136",
+                "up",
+                "28",
+                "0",
+                "0",
+                "128",
+                "1"
+            ],
+            [
+                "exec020",
+                "136",
+                "up",
+                "29",
+                "0",
+                "0",
+                "128",
+                "1"
+            ],
+            [
+                "exec027",
+                "136",
+                "up",
+                "42",
+                "0",
+                "0",
+                "192",
+                "1"
+            ],
+            [
+                "exec028",
+                "136",
+                "up",
+                "42",
+                "0",
+                "0",
+                "192",
+                "1"
+            ],
+            [
+                "exec029",
+                "136",
+                "up",
+                "43",
+                "0",
+                "0",
+                "192",
+                "1"
+            ]
+        ],
+        "unique_values": [
+            [
+                "exec020",
+                "exec021",
+                "exec022",
+                "exec023",
+                "exec024"
+            ],
+            [
+                "2",
+                "136",
+                "200",
+                "129",
+                "132"
+            ],
+            [
+                "up"
+            ],
+            [
+                "0",
+                "29",
+                "28",
+                "42",
+                "85"
+            ],
+            [
+                "0"
+            ],
+            [
+                "0"
+            ],
+            [
+                "0",
+                "128",
+                "192",
+                "384"
+            ],
+            [
+                "1"
+            ]
+        ],
+        "unique_values_count": [
+            13,
+            5,
+            1,
+            9,
+            1,
+            1,
+            4,
+            1
+        ],
+        "unique_values_range": [
+            [
+                "exec020",
+                "fshome.nanohub.org"
+            ],
+            [
+                "2",
+                "200"
+            ],
+            [
+                "up",
+                "up"
+            ],
+            [
+                "0",
+                "85"
+            ],
+            [
+                "0",
+                "0"
+            ],
+            [
+                "0",
+                "0"
+            ],
+            [
+                "0",
+                "384"
+            ],
+            [
+                "1",
+                "1"
+            ]
+        ]
+    },
+    "hosttype": {
+        "total_row": 8,
+        "column_names": [
+            "name",
+            "value",
+            "description"
+        ],
+        "column_data_types": [
+            "VARCHAR(40)",
+            "BIGINT(20) UNSIGNED",
+            "VARCHAR(255)"
+        ],
+        "column_key_types": [
+            "Primary",
+            "",
+            ""
+        ],
+        "rand_samples": [
+            [
+                "boinc",
+                "4",
+                "Dedicated to BOINC activity"
+            ],
+            [
+                "workshop",
+                "2048",
+                "During workshops, make designated tools run on these hosts"
+            ],
+            [
+                "wheezy",
+                "128",
+                "Debian 7 (Wheezy)"
+            ],
+            [
+                "fileserver",
+                "2",
+                "Fileserver host"
+            ],
+            [
+                "debian8",
+                "1024",
+                "Debian 8 (Jessie)"
+            ]
+        ],
+        "unique_values": [
+            [
+                "boinc",
+                "debian8",
+                "fileserver",
+                "himem",
+                "sessions"
+            ],
+            [
+                "1",
+                "2",
+                "8",
+                "64",
+                "128"
+            ],
+            [
+                "Workspace host",
+                "Fileserver host",
+                "Normal jobs",
+                "High Available Memory",
+                "Debian 7 (Wheezy)"
+            ]
+        ],
+        "unique_values_count": [
+            8,
+            8,
+            8
+        ],
+        "unique_values_range": [
+            [
+                "boinc",
+                "workspace"
+            ],
+            [
+                "1",
+                "2048"
+            ],
+            [
+                "Debian 7 (Wheezy)",
+                "Workspace host"
+            ]
+        ]
+    },
+    "job": {
+        "total_row": 5334,
+        "column_names": [
+            "sessnum",
+            "jobid",
+            "superjob",
+            "username",
+            "event",
+            "ncpus",
+            "venue",
+            "start",
+            "heartbeat",
+            "active",
+            "jobtoken"
+        ],
+        "column_data_types": [
+            "BIGINT(20) UNSIGNED",
+            "BIGINT(20) UNSIGNED",
+            "BIGINT(20) UNSIGNED",
+            "VARCHAR(32)",
+            "VARCHAR(40)",
+            "SMALLINT(5) UNSIGNED",
+            "VARCHAR(80)",
+            "DATETIME",
+            "DATETIME",
+            "SMALLINT(2)",
+            "VARCHAR(32)"
+        ],
+        "column_key_types": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "rand_samples": [
+            [
+                "1543832",
+                "7567035",
+                "0",
+                "ionhelper",
+                "[simulation]",
+                "1",
+                "any",
+                "2019-11-10 04:10:34",
+                "2019-11-10 04:10:34",
+                "0",
+                "jnuDjup3jhs0LIbU6WUOPjYSGsEqixaI"
+            ],
+            [
+                "1543363",
+                "7567136",
+                "0",
+                "ionhelper",
+                "[simulation]",
+                "1",
+                "any",
+                "2019-11-10 05:10:21",
+                "2019-11-10 05:10:21",
+                "0",
+                "iIFpI2FetWgbmDNKVbcv4cEOrPExVNXK"
+            ],
+            [
+                "1509008",
+                "7564021",
+                "0",
+                "instanton",
+                "[simulation]",
+                "1",
+                "any",
+                "2019-11-08 16:03:27",
+                "2019-11-08 16:03:27",
+                "4",
+                "yOOWe4dgjVFeOreTgF2PEy6OTFqHUCv5"
+            ],
+            [
+                "1495718",
+                "7264879",
+                "0",
+                "instanton",
+                "[simulation]",
+                "1",
+                "any",
+                "2019-06-24 10:55:54",
+                "2019-06-24 10:55:54",
+                "4",
+                "d5njnPREQWfhf9zMBXAz5jYVYWvEVaz9"
+            ],
+            [
+                "1509188",
+                "7558556",
+                "0",
+                "instanton",
+                "[simulation]",
+                "1",
+                "any",
+                "2019-11-05 13:30:01",
+                "2019-11-05 13:30:01",
+                "4",
+                "YSEj0aCx66a7lHmwDKmRgR9NjaFqfr4b"
+            ]
+        ],
+        "unique_values": [
+            [
+                "0",
+                "1506458",
+                "1506457",
+                "1516101",
+                "1543997"
+            ],
+            [
+                "4916197",
+                "7207398",
+                "7211353",
+                "7253090",
+                "7255489"
+            ],
+            [
+                "0",
+                "7567857",
+                "7566498",
+                "7566275",
+                "7566581"
+            ],
+            [
+                "20anand.abhi",
+                "999impact",
+                "ababiukm",
+                "abhilaksh93",
+                "abk15062000"
+            ],
+            [
+                "simulation",
+                "[simulation]"
+            ],
+            [
+                "1"
+            ],
+            [
+                "any"
+            ],
+            [],
+            [],
+            [
+                "2",
+                "3",
+                "4",
+                "0",
+                "1"
+            ],
+            [
+                "cJxBOLfRX11HspvMC1sNPEjbMQDNpck0",
+                "ztlyjVG2fn3R0uLoFxUTs7mI9UZpKFX4",
+                "91hmMErs5qBo3uX3oql7WrDjiIVoTymJ",
+                "gN0wD1FkJeMwQETrVf90INgGMHxXk3ft",
+                "lLoU4eYyBDgIZnrnjLjZ69Y6Su1yvJyA"
+            ]
+        ],
+        "unique_values_count": [
+            711,
+            5334,
+            25,
+            147,
+            2,
+            1,
+            1,
+            [],
+            [],
+            5,
+            5334
+        ],
+        "unique_values_range": [
+            [
+                "0",
+                "1544158"
+            ],
+            [
+                "4916197",
+                "7568636"
+            ],
+            [
+                "0",
+                "7568609"
+            ],
+            [
+                "20anand.abhi",
+                "zhifanke"
+            ],
+            [
+                "[simulation]",
+                "simulation"
+            ],
+            [
+                "1",
+                "1"
+            ],
+            [
+                "any",
+                "any"
+            ],
+            [
+                "(datetime.datetime(2015, 10, 29, 8, 3, 2),)",
+                "(datetime.datetime(2019, 11, 10, 15, 37, 1),)"
+            ],
+            [
+                "(datetime.datetime(2015, 10, 29, 8, 3, 2),)",
+                "(datetime.datetime(2019, 11, 10, 15, 37, 17),)"
+            ],
+            [
+                "0",
+                "4"
+            ],
+            [
+                "00kV5Y2P3qu2kTTVq08KVxMrxx0Tjkch",
+                "zzVWZCf65Nuk0XM3rusmQk6qYShBZtnA"
+            ]
+        ]
+    },
+    "joblog": {
+        "total_row": 25500397,
+        "column_names": [
+            "sessnum",
+            "job",
+            "superjob",
+            "event",
+            "start",
+            "walltime",
+            "cputime",
+            "ncpus",
+            "status",
+            "venue",
+            "zone_id",
+            "end"
+        ],
+        "column_data_types": [
+            "BIGINT(20) UNSIGNED",
+            "INTEGER(10) UNSIGNED",
+            "BIGINT(20) UNSIGNED",
+            "VARCHAR(40)",
+            "DATETIME",
+            "DOUBLE UNSIGNED",
+            "DOUBLE UNSIGNED",
+            "SMALLINT(5) UNSIGNED",
+            "SMALLINT(5) UNSIGNED",
+            "VARCHAR(80)",
+            "INTEGER(11)",
+            "TIMESTAMP"
+        ],
+        "column_key_types": [
+            "Primary",
+            "Primary",
+            "",
+            "Primary",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "Primary",
+            "",
+            ""
+        ],
+        "rand_samples": [
+            [
+                "1499923",
+                "7274049",
+                "0",
+                "[generated]",
+                "2019-07-07 19:36:34",
+                "0E-10",
+                "0E-10",
+                "0",
+                "0",
+                "30:specbot_0.3",
+                "0",
+                "2019-07-08 00:03:43"
+            ],
+            [
+                "1509186",
+                "7475824",
+                "0",
+                "[generated]",
+                "2019-09-03 23:25:53",
+                "0E-10",
+                "0E-10",
+                "0",
+                "0",
+                "248:specbot_0.3",
+                "0",
+                "2019-09-11 12:57:55"
+            ],
+            [
+                "1509008",
+                "7548759",
+                "0",
+                "[generated]",
+                "2019-10-29 22:31:38",
+                "0E-10",
+                "0E-10",
+                "0",
+                "0",
+                "37:specbot_0.3",
+                "0",
+                "2019-11-01 04:46:53"
+            ],
+            [
+                "365104",
+                "1652060",
+                "0",
+                "/probegridsite.sh",
+                "2011-03-16 02:17:05",
+                "0E-10",
+                "0.0100000000",
+                "1",
+                "0",
+                "1:runjobPBS:5984643.0:lepton.rcac.purdue.edu",
+                "0",
+                "0000-00-00 00:00:00"
+            ],
+            [
+                "299583",
+                "0",
+                "0",
+                "application",
+                "2010-05-28 00:31:37",
+                "51.3800000000",
+                "0.4380000000",
+                "1",
+                "0",
+                "",
+                "0",
+                "0000-00-00 00:00:00"
+            ]
+        ],
+        "unique_values": [
+            [
+                "0",
+                "1",
+                "3",
+                "4",
+                "5"
+            ],
+            [
+                "0",
+                "1",
+                "2",
+                "3",
+                "4"
+            ],
+            [
+                "0",
+                "574",
+                "577",
+                "580",
+                "590"
+            ],
+            [
+                " -i",
+                ".mat",
+                "._qdot",
+                "/\t",
+                "/ "
+            ],
+            [],
+            [],
+            [],
+            [
+                "1",
+                "12",
+                "24",
+                "32",
+                "2"
+            ],
+            [
+                "33024",
+                "0",
+                "32512",
+                "65535",
+                "1"
+            ],
+            [
+                "1:sshPBS:7802293:coates.rcac.purdue.edu",
+                "1:sshPBS:7802294:coates.rcac.purdue.edu",
+                "1:sshPBS:7802298:coates.rcac.purdue.edu",
+                "1:sshPBS:7824660:coates.rcac.purdue.edu",
+                "1:sshPBS:7824662:coates.rcac.purdue.edu"
+            ],
+            [
+                "0"
+            ],
+            []
+        ],
+        "unique_values_count": [
+            1487698,
+            7539971,
+            95511,
+            161875,
+            [],
+            [],
+            [],
+            388,
+            165,
+            5039367,
+            1,
+            []
+        ],
+        "unique_values_range": [
+            [
+                "0",
+                "1544158"
+            ],
+            [
+                "0",
+                "7568636"
+            ],
+            [
+                "0",
+                "7568609"
+            ],
+            [
+                " -i",
+                "zeno_r28"
+            ],
+            [],
+            [
+                "(Decimal('0E-10'),)",
+                "(Decimal('1573371570.0000000000'),)"
+            ],
+            [
+                "(Decimal('0E-10'),)",
+                "(Decimal('22749490080.0000000000'),)"
+            ],
+            [
+                "0",
+                "65535"
+            ],
+            [
+                "0",
+                "65535"
+            ],
+            [
+                "",
+                "violina.x"
+            ],
+            [
+                "0",
+                "0"
+            ],
+            []
+        ]
+    },
+    "mw_status_codes": {
+        "total_row": 35,
+        "column_names": [
+            "status",
+            "description"
+        ],
+        "column_data_types": [
+            "SMALLINT(5) UNSIGNED",
+            "VARCHAR(120)"
+        ],
+        "column_key_types": [
+            "Primary",
+            ""
+        ],
+        "rand_samples": [
+            [
+                "4",
+                "Session authentication failed"
+            ],
+            [
+                "8",
+                "Execution hosts are out of service"
+            ],
+            [
+                "139",
+                "Array index out of bounds"
+            ],
+            [
+                "258",
+                "SIGINT - job aborted"
+            ],
+            [
+                "22",
+                "Job removed from remote queue"
+            ]
+        ],
+        "unique_values": [
+            [
+                "4",
+                "5",
+                "6",
+                "7",
+                "8"
+            ],
+            [
+                "Session authentication failed",
+                "One-day job limit exceeded",
+                "Missing home directory",
+                "Execution hosts have been disabled",
+                "Execution hosts are out of service"
+            ]
+        ],
+        "unique_values_count": [
+            35,
+            33
+        ],
+        "unique_values_range": [
+            [
+                "4",
+                "269"
+            ],
+            [
+                "Array index out of bounds",
+                "ssh: connect to host, Connection timed out"
+            ]
+        ]
+    },
+    "route": {
+        "total_row": 87,
+        "column_names": [
+            "hostname",
+            "port",
+            "sessnum",
+            "description"
+        ],
+        "column_data_types": [
+            "VARCHAR(40)",
+            "SMALLINT(5) UNSIGNED",
+            "BIGINT(20) UNSIGNED",
+            "VARCHAR(255)"
+        ],
+        "column_key_types": [
+            "",
+            "",
+            "",
+            ""
+        ],
+        "rand_samples": [
+            [
+                "",
+                "0",
+                "230558",
+                ""
+            ],
+            [
+                "",
+                "0",
+                "230493",
+                ""
+            ],
+            [
+                "",
+                "0",
+                "230513",
+                ""
+            ],
+            [
+                "",
+                "0",
+                "230503",
+                ""
+            ],
+            [
+                "",
+                "0",
+                "230543",
+                ""
+            ]
+        ],
+        "unique_values": [
+            [
+                ""
+            ],
+            [
+                "0"
+            ],
+            [
+                "230549",
+                "230550",
+                "230551",
+                "230552",
+                "230553"
+            ],
+            [
+                ""
+            ]
+        ],
+        "unique_values_count": [
+            1,
+            1,
+            87,
+            1
+        ],
+        "unique_values_range": [
+            [
+                "",
+                ""
+            ],
+            [
+                "0",
+                "0"
+            ],
+            [
+                "230068",
+                "230596"
+            ],
+            [
+                "",
+                ""
+            ]
+        ]
+    },
+    "session": {
+        "total_row": 1048,
+        "column_names": [
+            "sessnum",
+            "username",
+            "remoteip",
+            "exechost",
+            "dispnum",
+            "start",
+            "accesstime",
+            "timeout",
+            "appname",
+            "sessname",
+            "sesstoken",
+            "title",
+            "params",
+            "zone_id"
+        ],
+        "column_data_types": [
+            "BIGINT(20) UNSIGNED",
+            "VARCHAR(32)",
+            "VARCHAR(40)",
+            "VARCHAR(40)",
+            "INTEGER(10) UNSIGNED",
+            "DATETIME",
+            "DATETIME",
+            "INTEGER(11)",
+            "VARCHAR(80)",
+            "VARCHAR(100)",
+            "VARCHAR(32)",
+            "VARCHAR(255)",
+            "TEXT",
+            "INTEGER(11)"
+        ],
+        "column_key_types": [
+            "Primary",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "rand_samples": [
+            [
+                "1519731",
+                "kaf2",
+                "130.203.234.124",
+                "exec025",
+                "35",
+                "2019-09-19 13:20:15",
+                "2019-09-19 13:21:52",
+                "86400",
+                "jmoltool_r14",
+                "MSE educational tool: crystal structure and lattice plane visualization with Jmol",
+                "H7u2X5F1EbrbN4JpyLEFgXogN5ok8FCn",
+                "None",
+                "",
+                "0"
+            ],
+            [
+                "1469063",
+                "instanton",
+                "128.46.19.134",
+                "submit",
+                "0",
+                "2019-04-03 06:10:09",
+                "2019-04-03 06:10:09",
+                "86400",
+                "workspace_r12",
+                "Workspace",
+                "FqZxPIQnpynUMz08Ru9UaR3AClLiDckt",
+                "None",
+                "None",
+                "0"
+            ],
+            [
+                "1469453",
+                "instanton",
+                "128.46.19.134",
+                "submit",
+                "0",
+                "2019-04-03 20:42:48",
+                "2019-04-03 20:42:48",
+                "86400",
+                "workspace_r12",
+                "Workspace",
+                "mQCtz0fTolUbELMMFy2HcfR1Xo10jqyg",
+                "None",
+                "None",
+                "0"
+            ],
+            [
+                "1543462",
+                "adilkhan",
+                "103.21.127.81",
+                "exec028",
+                "18",
+                "2019-11-09 13:34:35",
+                "2019-11-10 13:35:47",
+                "86400",
+                "pntoy_r56",
+                "PN Junction Lab",
+                "XfA5W6Z0TeYE8ydXAynSQpVM5PBxKT2l",
+                "None",
+                "",
+                "0"
+            ],
+            [
+                "1469406",
+                "instanton",
+                "128.46.19.134",
+                "submit",
+                "0",
+                "2019-04-03 19:11:18",
+                "2019-04-03 19:11:18",
+                "86400",
+                "workspace_r12",
+                "Workspace",
+                "Ym1BEjRzTsTfa8gpVjyX7E5sgfFIEvz3",
+                "None",
+                "None",
+                "0"
+            ]
+        ],
+        "unique_values": [
+            [
+                "1449474",
+                "1449652",
+                "1450161",
+                "1450169",
+                "1451316"
+            ],
+            [
+                "instanton",
+                "ashutoshranjan253",
+                "gore9",
+                "eng.hassan.cu",
+                "deli"
+            ],
+            [
+                "128.46.19.134",
+                "103.21.127.81",
+                "69.174.144.38",
+                "197.35.6.81",
+                "79.154.84.87"
+            ],
+            [
+                "submit",
+                "exec025",
+                "exec022",
+                "exec021",
+                "exec027"
+            ],
+            [
+                "0",
+                "61",
+                "19",
+                "15",
+                "64"
+            ],
+            [],
+            [],
+            [
+                "86400",
+                "1209600",
+                "345600",
+                "432000"
+            ],
+            [
+                "htworkspace_r2",
+                "pntoy_r56",
+                "jmoltool_r14",
+                "bjt_r92",
+                "dualfoil_r29"
+            ],
+            [
+                "BOINC_20190707-191937",
+                "BOINC_20190708-195005",
+                "PN Junction Lab",
+                "MSE educational tool: crystal structure and lattice plane visualization with Jmol",
+                "BJT Lab"
+            ],
+            [
+                "i0TaVZhTxbiBD05yvyd0pVWaQEKaFoyu",
+                "xTPTwQrqjUNIIYX7BgqYv2iB7q6pUrgF",
+                "C36ZVUJ7S3FP1MJxaUgKjGRK49D6jjuJ",
+                "1xNOPzwkROvmszNZPPc3boVD5WwyjArO",
+                "6n0IUk1kgJCHHAvBLbfLyOQBM5NEoer8"
+            ],
+            [
+                "None"
+            ],
+            [],
+            [
+                "0"
+            ]
+        ],
+        "unique_values_count": [
+            1048,
+            337,
+            293,
+            13,
+            86,
+            [],
+            [],
+            4,
+            87,
+            245,
+            1048,
+            1,
+            [],
+            1
+        ],
+        "unique_values_range": [
+            [
+                "1449474",
+                "1544163"
+            ],
+            [
+                "20anand.abhi",
+                "zx19921014"
+            ],
+            [
+                "10.160.165.22",
+                "99.250.41.84"
+            ],
+            [
+                "exec020",
+                "submit"
+            ],
+            [
+                "0",
+                "88"
+            ],
+            [
+                "(datetime.datetime(2019, 2, 12, 13, 13, 27),)",
+                "(datetime.datetime(2019, 11, 10, 15, 46, 20),)"
+            ],
+            [
+                "(datetime.datetime(2019, 2, 12, 13, 13, 27),)",
+                "(datetime.datetime(2019, 11, 10, 15, 47, 27),)"
+            ],
+            [
+                "86400",
+                "1209600"
+            ],
+            [
+                "1dhetero_r742",
+                "wulffman_r5"
+            ],
+            [
+                "1D Heterostructure Tool",
+                "tellurium"
+            ],
+            [
+                "046R8piFFZtZaRYfLahW4m1sC7iboUAa",
+                "zwTHhwxL54kb60gjOrA90cavxd4knh1Y"
+            ],
+            [
+                "None",
+                "None"
+            ],
+            [],
+            [
+                "0",
+                "0"
+            ]
+        ]
+    },
+    "sessionlog": {
+        "total_row": 1490795,
+        "column_names": [
+            "sessnum",
+            "username",
+            "remoteip",
+            "remotehost",
+            "exechost",
+            "dispnum",
+            "start",
+            "appname",
+            "walltime",
+            "viewtime",
+            "cputime",
+            "status",
+            "zone_id"
+        ],
+        "column_data_types": [
+            "BIGINT(20) UNSIGNED",
+            "VARCHAR(32)",
+            "VARCHAR(40)",
+            "VARCHAR(40)",
+            "VARCHAR(40)",
+            "INTEGER(10) UNSIGNED",
+            "DATETIME",
+            "VARCHAR(80)",
+            "DOUBLE UNSIGNED",
+            "DOUBLE UNSIGNED",
+            "DOUBLE UNSIGNED",
+            "SMALLINT(5) UNSIGNED",
+            "INTEGER(11)"
+        ],
+        "column_key_types": [
+            "Primary",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "rand_samples": [
+            [
+                "453472",
+                "alan.rossetto",
+                "143.54.30.7",
+                "",
+                "exec005",
+                "12",
+                "2012-01-23 13:50:23",
+                "moscap_r63",
+                "0E-10",
+                "0E-10",
+                "16.3140000000",
+                "65535",
+                "0"
+            ],
+            [
+                "1305860",
+                "aljaodi",
+                "192.228.145.226",
+                "",
+                "exec028",
+                "85",
+                "2018-05-06 04:01:38",
+                "pntoy_r56",
+                "11149.0000000000",
+                "10955.6220700000",
+                "153.6420000000",
+                "0",
+                "0"
+            ],
+            [
+                "1148914",
+                "mmh",
+                "69.174.137.65",
+                "",
+                "exec026",
+                "7",
+                "2017-05-15 22:55:43",
+                "jupyter_r5",
+                "90856.0000000000",
+                "7275.0000000000",
+                "101.3270000000",
+                "0",
+                "0"
+            ],
+            [
+                "1415691",
+                "casperpenning95",
+                "84.106.97.1",
+                "",
+                "exec021",
+                "13",
+                "2018-12-06 04:03:36",
+                "veda_r1262",
+                "4879.0000000000",
+                "4867.9000000000",
+                "11.9280000000",
+                "65535",
+                "0"
+            ],
+            [
+                "1379142",
+                "lucaselmi",
+                "155.185.48.95",
+                "",
+                "exec026",
+                "10",
+                "2018-10-17 05:27:20",
+                "abacus_r31",
+                "77012.0000000000",
+                "2880.2700000000",
+                "102.5480000000",
+                "0",
+                "0"
+            ]
+        ],
+        "unique_values": [
+            [
+                "1",
+                "3",
+                "4",
+                "5",
+                "6"
+            ],
+            [
+                "mmc",
+                "ricktest",
+                "sc2005_01",
+                "kennell",
+                "gekco"
+            ],
+            [
+                "12.208.111.95",
+                "128.210.189.80",
+                "12.208.110.164",
+                "72.12.200.133",
+                "71.98.87.114"
+            ],
+            [
+                ""
+            ],
+            [
+                "shadow159",
+                "shadow157",
+                "shadow154",
+                "shadow158",
+                "shadow151"
+            ],
+            [
+                "1",
+                "3",
+                "5",
+                "4",
+                "2"
+            ],
+            [],
+            [
+                "qdot",
+                "xterm",
+                "spice3f4",
+                "workspace",
+                "workspace-big"
+            ],
+            [],
+            [],
+            [],
+            [
+                "33024",
+                "0",
+                "32512",
+                "65535",
+                "1"
+            ],
+            [
+                "0"
+            ]
+        ],
+        "unique_values_count": [
+            1490795,
+            121527,
+            276124,
+            1,
+            111,
+            999,
+            [],
+            3591,
+            [],
+            [],
+            [],
+            20,
+            1
+        ],
+        "unique_values_range": [
+            [
+                "1",
+                "1544164"
+            ],
+            [
+                "",
+                "zzzstas"
+            ],
+            [
+                "",
+                "99.99.63.221"
+            ],
+            [
+                "",
+                ""
+            ],
+            [
+                "",
+                "vmb145"
+            ],
+            [
+                "0",
+                "999"
+            ],
+            [],
+            [
+                "",
+                "zooleylinux_dev"
+            ],
+            [
+                "(Decimal('0E-10'),)",
+                "(Decimal('1318953667.0000000000'),)"
+            ],
+            [
+                "(Decimal('0E-10'),)",
+                "(Decimal('12472226.2965999991'),)"
+            ],
+            [
+                "(Decimal('0E-10'),)",
+                "(Decimal('63703596.6089999974'),)"
+            ],
+            [
+                "0",
+                "65535"
+            ],
+            [
+                "0",
+                "0"
+            ]
+        ]
+    },
+    "sessionpriv": {
+        "total_row": 75,
+        "column_names": [
+            "privid",
+            "sessnum",
+            "addgroup",
+            "start",
+            "viewconstraint"
+        ],
+        "column_data_types": [
+            "BIGINT(20) UNSIGNED",
+            "BIGINT(20) UNSIGNED",
+            "VARCHAR(40)",
+            "DATETIME",
+            "VARCHAR(200)"
+        ],
+        "column_key_types": [
+            "Primary",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "rand_samples": [
+            [
+                "41807",
+                "408162",
+                "matlab",
+                "2011-08-05 16:00:39",
+                "location='pu'"
+            ],
+            [
+                "42250",
+                "414973",
+                "matlab",
+                "2011-09-08 14:33:20",
+                "location='pu'"
+            ],
+            [
+                "42252",
+                "414907",
+                "matlab",
+                "2011-09-08 23:10:23",
+                "location='pu'"
+            ],
+            [
+                "42323",
+                "418636",
+                "matlab",
+                "2011-09-23 18:46:21",
+                "location='pu'"
+            ],
+            [
+                "41616",
+                "408162",
+                "matlab",
+                "2011-08-03 16:11:53",
+                "location='pu'"
+            ]
+        ],
+        "unique_values": [
+            [
+                "34430",
+                "34439",
+                "34455",
+                "34460",
+                "34469"
+            ],
+            [
+                "364971",
+                "365070",
+                "366302",
+                "366702",
+                "367183"
+            ],
+            [
+                "matlab"
+            ],
+            [],
+            [
+                "location='pu'"
+            ]
+        ],
+        "unique_values_count": [
+            75,
+            53,
+            1,
+            [],
+            1
+        ],
+        "unique_values_range": [
+            [
+                "34430",
+                "44166"
+            ],
+            [
+                "364971",
+                "494962"
+            ],
+            [
+                "matlab",
+                "matlab"
+            ],
+            [
+                "(datetime.datetime(2011, 2, 23, 11, 44, 43),)",
+                "(datetime.datetime(2012, 5, 10, 20, 8, 23),)"
+            ],
+            [
+                "location='pu'",
+                "location='pu'"
+            ]
+        ]
+    },
+    "squidlog": {
+        "total_row": 409996,
+        "column_names": [
+            "utc",
+            "sessnum",
+            "event",
+            "squid",
+            "uuid",
+            "logobj"
+        ],
+        "column_data_types": [
+            "DATETIME",
+            "BIGINT(20)",
+            "VARCHAR(40)",
+            "VARCHAR(255)",
+            "VARCHAR(40)",
+            "BLOB"
+        ],
+        "column_key_types": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "rand_samples": [
+            [
+                "2019-03-28 06:29:43",
+                "1466722",
+                "cache/publish",
+                "fermi/83/6e9d435327cf70205a8d57d8d3873a88663c511a",
+                "None",
+                "None"
+            ],
+            [
+                "2019-02-26 05:13:16",
+                "1455029",
+                "cache/miss",
+                "calibdriver/9/a83d209eace078f7d9cbea61555a602b1d847da2",
+                "None",
+                "None"
+            ],
+            [
+                "2019-02-05 16:46:10",
+                "1446537",
+                "cache/miss",
+                "lammpstool/46/36bc4dc74e3c3350fe81643b096c5c0782fc0d3f",
+                "None",
+                "None"
+            ],
+            [
+                "2019-02-05 15:15:03",
+                "1447053",
+                "cache/hit",
+                "crystal_viewer/398/764f2a5b255affa0748082dffc7afb91d9cf3830",
+                "None",
+                "None"
+            ],
+            [
+                "2019-03-21 13:25:01",
+                "1464322",
+                "cache/publish",
+                "qclab/79/5053da14873223ee9dd6de13c8d78cddc881f317",
+                "None",
+                "None"
+            ]
+        ],
+        "unique_values": [
+            [],
+            [
+                "1436376",
+                "1436378",
+                "1436379",
+                "1436381",
+                "1436383"
+            ],
+            [
+                "cache/hit",
+                "cache/miss",
+                "cache/publish"
+            ],
+            [
+                "1dchainmd/15/03a47ecbdc04e0797351173f07a6ce84a95dbb2a",
+                "1dchainmd/15/10a5b42383e70c97a0cbf8c4cf8bc47142f30f3d",
+                "1dchainmd/15/1234c463ca92c47aa74250d59018d3026f420cba",
+                "1dchainmd/15/13697ed7d8985e7bb559c5656f1cb8c1d7139717",
+                "1dchainmd/15/1538ea07dbe44a885ec6806a48c2cd9936b7c0d9"
+            ],
+            [
+                "None"
+            ],
+            []
+        ],
+        "unique_values_count": [
+            [],
+            55153,
+            3,
+            166175,
+            1,
+            []
+        ],
+        "unique_values_range": [
+            [
+                "(datetime.datetime(2019, 1, 6, 12, 27, 25),)",
+                "(datetime.datetime(2019, 11, 10, 15, 47, 30),)"
+            ],
+            [
+                "1436376",
+                "1544164"
+            ],
+            [
+                "cache/hit",
+                "cache/publish"
+            ],
+            [
+                "1dchainmd/15/03a47ecbdc04e0797351173f07a6ce84a95dbb2a",
+                "zeno/28/81c01c59ce26875789e0d0210c38972b823bb1a5"
+            ],
+            [
+                "None",
+                "None"
+            ],
+            [
+                "(None,)",
+                "(None,)"
+            ]
+        ]
+    },
+    "usertype": {
+        "total_row": 0,
+        "column_names": [
+            "name",
+            "value",
+            "description"
+        ],
+        "column_data_types": [
+            "VARCHAR(40)",
+            "BIGINT(20) UNSIGNED",
+            "VARCHAR(255)"
+        ],
+        "column_key_types": [
+            "",
+            "",
+            ""
+        ],
+        "rand_samples": [],
+        "unique_values": [
+            [],
+            [],
+            []
+        ],
+        "unique_values_count": [
+            0,
+            0,
+            0
+        ],
+        "unique_values_range": [
+            [],
+            [],
+            []
+        ]
+    },
+    "venue": {
+        "total_row": 0,
+        "column_names": [
+            "id",
+            "venue",
+            "state",
+            "type",
+            "mw_version",
+            "ssh_key_path",
+            "latitude",
+            "longitude",
+            "master"
+        ],
+        "column_data_types": [
+            "INTEGER(11)",
+            "VARCHAR(40)",
+            "VARCHAR(15)",
+            "VARCHAR(10)",
+            "VARCHAR(3)",
+            "VARCHAR(200)",
+            "DOUBLE",
+            "DOUBLE",
+            "VARCHAR(255)"
+        ],
+        "column_key_types": [
+            "Primary",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "rand_samples": [],
+        "unique_values": [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
+        ],
+        "unique_values_count": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            [],
+            [],
+            0
+        ],
+        "unique_values_range": [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [
+                "[]",
+                "[]"
+            ],
+            [
+                "[]",
+                "[]"
+            ],
+            []
+        ]
+    },
+    "venue_countries": {
+        "total_row": 0,
+        "column_names": [
+            "id",
+            "venue_id",
+            "countrySHORT"
+        ],
+        "column_data_types": [
+            "INTEGER(11)",
+            "INTEGER(11)",
+            "VARCHAR(40)"
+        ],
+        "column_key_types": [
+            "Primary",
+            "",
+            ""
+        ],
+        "rand_samples": [],
+        "unique_values": [
+            [],
+            [],
+            []
+        ],
+        "unique_values_count": [
+            0,
+            0,
+            0
+        ],
+        "unique_values_range": [
+            [],
+            [],
+            []
+        ]
+    },
+    "view": {
+        "total_row": 102,
+        "column_names": [
+            "viewid",
+            "sessnum",
+            "username",
+            "remoteip",
+            "start",
+            "heartbeat"
+        ],
+        "column_data_types": [
+            "BIGINT(20) UNSIGNED",
+            "BIGINT(20) UNSIGNED",
+            "VARCHAR(32)",
+            "VARCHAR(40)",
+            "DATETIME",
+            "DATETIME"
+        ],
+        "column_key_types": [
+            "Primary",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "rand_samples": [
+            [
+                "2821145",
+                "1543737",
+                "prashilpatil99",
+                "127.0.0.1",
+                "2019-11-10 03:06:20",
+                "2019-11-10 12:42:21"
+            ],
+            [
+                "2813832",
+                "1542761",
+                "opuoth",
+                "127.0.0.1",
+                "2019-11-08 02:31:55",
+                "2019-11-10 12:07:59"
+            ],
+            [
+                "2823115",
+                "1544074",
+                "hutchi21",
+                "10.186.75.84",
+                "2019-11-10 15:33:11",
+                "2019-11-10 15:33:11"
+            ],
+            [
+                "2823075",
+                "1544149",
+                "zhan2846",
+                "10.184.12.232",
+                "2019-11-10 15:18:43",
+                "2019-11-10 15:18:43"
+            ],
+            [
+                "2823062",
+                "1544144",
+                "porte107",
+                "68.234.145.148",
+                "2019-11-10 15:10:51",
+                "2019-11-10 15:10:51"
+            ]
+        ],
+        "unique_values": [
+            [
+                "2803490",
+                "2807188",
+                "2809108",
+                "2809780",
+                "2811870"
+            ],
+            [
+                "1541405",
+                "1543485",
+                "1544161",
+                "1538354",
+                "1544144"
+            ],
+            [
+                "zliu555",
+                "nikhil10rai",
+                "mccar107",
+                "hschroad",
+                "porte107"
+            ],
+            [
+                "127.0.0.1",
+                "10.186.184.68",
+                "128.211.133.13",
+                "68.234.145.148",
+                "103.21.125.80"
+            ],
+            [],
+            []
+        ],
+        "unique_values_count": [
+            102,
+            64,
+            62,
+            28,
+            [],
+            []
+        ],
+        "unique_values_range": [
+            [
+                "2803490",
+                "2823150"
+            ],
+            [
+                "1538354",
+                "1544162"
+            ],
+            [
+                "abk15062000",
+                "zliu555"
+            ],
+            [
+                "10.184.12.232",
+                "95.114.117.158"
+            ],
+            [
+                "(datetime.datetime(2019, 11, 5, 17, 0, 44),)",
+                "(datetime.datetime(2019, 11, 10, 15, 48, 4),)"
+            ],
+            [
+                "(datetime.datetime(2019, 11, 10, 1, 58, 4),)",
+                "(datetime.datetime(2019, 11, 10, 15, 48, 4),)"
+            ]
+        ]
+    },
+    "viewlog": {
+        "total_row": 2916325,
+        "column_names": [
+            "sessnum",
+            "username",
+            "remoteip",
+            "remotehost",
+            "time",
+            "duration"
+        ],
+        "column_data_types": [
+            "BIGINT(20) UNSIGNED",
+            "VARCHAR(32)",
+            "VARCHAR(40)",
+            "VARCHAR(40)",
+            "DATETIME",
+            "FLOAT UNSIGNED"
+        ],
+        "column_key_types": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "rand_samples": [
+            [
+                "122331",
+                "arif999",
+                "131.230.135.26",
+                "",
+                "2008-04-27 20:42:28",
+                "94.7353"
+            ],
+            [
+                "1436510",
+                "isaacmonba",
+                "127.0.0.1",
+                "",
+                "2019-01-09 03:30:32",
+                "306.73"
+            ],
+            [
+                "300529",
+                "turkstra",
+                "98.223.55.100",
+                "",
+                "2010-06-02 11:03:01",
+                "4.2049"
+            ],
+            [
+                "241000",
+                "ahaberlein",
+                "67.175.12.61",
+                "",
+                "2009-11-05 22:57:06",
+                "353.225"
+            ],
+            [
+                "1486320",
+                "instanton",
+                "128.46.19.134",
+                "",
+                "2019-05-25 01:47:15",
+                "0.467807"
+            ]
+        ],
+        "unique_values": [
+            [
+                "0",
+                "1",
+                "3",
+                "4",
+                "5"
+            ],
+            [
+                "kennell",
+                "ricktest",
+                "gekco",
+                "mmc",
+                "sc2005_01"
+            ],
+            [
+                "12.208.110.164",
+                "71.98.87.114",
+                "12.208.111.95",
+                "128.210.189.80",
+                "72.12.200.133"
+            ],
+            [
+                ""
+            ],
+            [],
+            []
+        ],
+        "unique_values_count": [
+            1151590,
+            113818,
+            211539,
+            1,
+            [],
+            []
+        ],
+        "unique_values_range": [
+            [
+                "0",
+                "1544163"
+            ],
+            [
+                "0.yao.yuan",
+                "zzzstas"
+            ],
+            [
+                "0.0.0.0",
+                "<unknown address>"
+            ],
+            [
+                "",
+                ""
+            ],
+            [
+                "(datetime.datetime(2005, 11, 12, 2, 26, 12),)",
+                "(datetime.datetime(2019, 11, 10, 15, 46, 26),)"
+            ],
+            [
+                "(0.0,)",
+                "(10102800.0,)"
+            ]
+        ]
+    },
+    "viewperm": {
+        "total_row": 428,
+        "column_names": [
+            "sessnum",
+            "viewuser",
+            "viewtoken",
+            "geometry",
+            "fwhost",
+            "fwport",
+            "vncpass",
+            "readonly"
+        ],
+        "column_data_types": [
+            "BIGINT(20) UNSIGNED",
+            "VARCHAR(32)",
+            "VARCHAR(32)",
+            "VARCHAR(9)",
+            "VARCHAR(40)",
+            "SMALLINT(5) UNSIGNED",
+            "VARCHAR(16)",
+            "VARCHAR(4)"
+        ],
+        "column_key_types": [
+            "Primary",
+            "Primary",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "rand_samples": [
+            [
+                "1543865",
+                "walailak",
+                "s47o67fouPy2ASNIbSpTPY9iRPHwG5Qy",
+                "815x860",
+                "",
+                "0",
+                "45adc65b5105150b",
+                "No"
+            ],
+            [
+                "1508011",
+                "apps",
+                "7UoMzF3VFWVXdQNiCfmYKh3Uyxn0yMrN",
+                "1024x768",
+                "",
+                "0",
+                "69e493ab7a0287ad",
+                "No"
+            ],
+            [
+                "1543603",
+                "hutchi21",
+                "m1skyEcFjcQsHkCgRPGUhfDDWZuLs6Yh",
+                "780x600",
+                "",
+                "0",
+                "5293eb4b7da8dac9",
+                "No"
+            ],
+            [
+                "1544036",
+                "khunkwans",
+                "zEZ6Dkf75GcIFsXyfNtdyANLqvBmpN7Q",
+                "815x860",
+                "",
+                "0",
+                "b5203ffc9509cd34",
+                "No"
+            ],
+            [
+                "1543837",
+                "shaunzac",
+                "I4xOxPcvjrgwVrfJ0pqCtJXYyuyqhkgP",
+                "780x600",
+                "",
+                "0",
+                "767dbe2e0d8440a4",
+                "No"
+            ]
+        ],
+        "unique_values": [
+            [
+                "1498829",
+                "1498881",
+                "1502951",
+                "1507488",
+                "1508011"
+            ],
+            [
+                "juri",
+                "gridstat",
+                "wang159",
+                "clarksm",
+                "apps"
+            ],
+            [
+                "7UoMzF3VFWVXdQNiCfmYKh3Uyxn0yMrN",
+                "wAvcwCPtcwvy76U1HXJtmW2zWaxuaPpF",
+                "MlRhrjSWZ7RKgTcMvqdweGLBox9dQKRj",
+                "ac4U1dcNgoUDd88SxO9jGwa0ZzOkdSLU",
+                "7KOV8SzSIz5fLfK31LHzDLPa6XqKcKMX"
+            ],
+            [
+                "1024x768",
+                "895x637",
+                "850x550",
+                "780x600",
+                "740x600"
+            ],
+            [
+                ""
+            ],
+            [
+                "0"
+            ],
+            [
+                "69e493ab7a0287ad",
+                "8def803c81bf5d27",
+                "db0aab1e2f1e64b6",
+                "dcc49d8b392398f9",
+                "c21212467745f1fe"
+            ],
+            [
+                "No"
+            ]
+        ],
+        "unique_values_count": [
+            427,
+            293,
+            428,
+            31,
+            1,
+            1,
+            427,
+            1
+        ],
+        "unique_values_range": [
+            [
+                "1498829",
+                "1544163"
+            ],
+            [
+                "20anand.abhi",
+                "ztking"
+            ],
+            [
+                "0IrqTzMQLXh9Dxyn1I439MMn7f5xbkhG",
+                "zxeI7pCaR1Cjs6ByoEKWbNwMadR8gxhE"
+            ],
+            [
+                "1000x600",
+                "950x900"
+            ],
+            [
+                "",
+                ""
+            ],
+            [
+                "0",
+                "0"
+            ],
+            [
+                "00e730b1f5998613",
+                "ffce0f23eca17a47"
+            ],
+            [
+                "No",
+                "No"
+            ]
+        ]
+    },
+    "zone_locations": {
+        "total_row": 0,
+        "column_names": [
+            "id",
+            "zone_id",
+            "ipFROM",
+            "ipTO",
+            "continent",
+            "countrySHORT",
+            "countryLONG",
+            "ipREGION",
+            "ipCITY",
+            "ipLATITUDE",
+            "ipLONGITUDE",
+            "notes"
+        ],
+        "column_data_types": [
+            "INTEGER(11)",
+            "INTEGER(11)",
+            "INTEGER(10) UNSIGNED ZEROFILL",
+            "INTEGER(10) UNSIGNED ZEROFILL",
+            "CHAR(2)",
+            "CHAR(2)",
+            "VARCHAR(64)",
+            "VARCHAR(128)",
+            "VARCHAR(128)",
+            "DOUBLE",
+            "DOUBLE",
+            "VARCHAR(128)"
+        ],
+        "column_key_types": [
+            "Primary",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "rand_samples": [],
+        "unique_values": [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
+        ],
+        "unique_values_count": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            [],
+            [],
+            0
+        ],
+        "unique_values_range": [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [
+                "[]",
+                "[]"
+            ],
+            [
+                "[]",
+                "[]"
+            ],
+            []
+        ]
+    },
+    "zones": {
+        "total_row": 0,
+        "column_names": [
+            "id",
+            "zone",
+            "title",
+            "state",
+            "is_default",
+            "type",
+            "master",
+            "mw_version",
+            "ssh_key_path",
+            "description",
+            "params"
+        ],
+        "column_data_types": [
+            "INTEGER(11)",
+            "VARCHAR(40)",
+            "VARCHAR(255)",
+            "VARCHAR(15)",
+            "TINYINT(2)",
+            "VARCHAR(10)",
+            "VARCHAR(255)",
+            "VARCHAR(3)",
+            "VARCHAR(200)",
+            "TEXT",
+            "TEXT"
+        ],
+        "column_key_types": [
+            "Primary",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "rand_samples": [],
+        "unique_values": [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
+        ],
+        "unique_values_count": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            [],
+            []
+        ],
+        "unique_values_range": [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [
+                "[]",
+                "[]"
+            ],
+            [
+                "[]",
+                "[]"
+            ]
+        ]
+    }
+}

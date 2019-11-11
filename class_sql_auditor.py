@@ -84,7 +84,7 @@ class SQL_db_auditor():
 
 
     # output general information JSON file
-    with open(os.path.join(self.params['pickle_dir'], 'all_table_info.json'), 'w') as fid:
+    with open(os.path.join(self.params['d3_data_dir'], 'all_table_info.json'), 'w') as fid:
       json.dump(database_info, fid, indent=4)
 
 
@@ -97,8 +97,6 @@ class SQL_table_auditor():
   def __init__(self, engine, params, table_name):
     
     self.engine = engine
-    Session = sessionmaker(bind=self.engine)
-    self.session = Session()
 
     self.table_name = table_name
     self.params = params
@@ -184,6 +182,9 @@ class SQL_table_auditor():
     
       self.column_distinct_values[this_column_key] = [x.values()[0] for x in result_set]
       self.column_row_cnt[this_column_key] = len(result_set)
+      
+    # close connection
+    connection.close()
   
   
   
@@ -194,8 +195,11 @@ class SQL_table_auditor():
     json_dict = dict()
     
     ### acquire general information about the table
+    Session = sessionmaker(bind=self.engine)
+    session = Session()
+    
     # total row numbers
-    self.info['total_row'] = self.session.query(self.sql_table).count()
+    self.info['total_row'] = session.query(self.sql_table).count()
     
     # column names, types
     self.info['column_names'] = list()
@@ -216,9 +220,9 @@ class SQL_table_auditor():
       self.info['column_key_types'].append(this_key_type)
                     
     # randomly sample 5 rows
-    #self.info['rand_samples'] = self.session.query(self.sql_table).order_by(func.rand()).limit(5).all()
+    #self.info['rand_samples'] = session.query(self.sql_table).order_by(func.rand()).limit(5).all()
     self.info['rand_samples'] = list()
-    for this_row in self.session.query(self.sql_table).order_by(func.rand()).limit(5).all():
+    for this_row in session.query(self.sql_table).order_by(func.rand()).limit(5).all():
       self.info['rand_samples'].append([str(x) for x in this_row])
         
     # unique # of values, range of values, etc.
@@ -242,10 +246,10 @@ class SQL_table_auditor():
         self.info['unique_values'].append([])
         self.info['unique_values_count'].append([])
         
-        min_var = self.session.query(this_column).order_by(desc(this_column)).limit(1).all()
+        min_var = session.query(this_column).order_by(desc(this_column)).limit(1).all()
         if min_var: min_var = min_var[0]
            
-        max_var = self.session.query(this_column).order_by(asc(this_column)).limit(1).all()
+        max_var = session.query(this_column).order_by(asc(this_column)).limit(1).all()
         if max_var: max_var = max_var[0]
         
         distinct_values = [min_var, max_var]
@@ -257,6 +261,7 @@ class SQL_table_auditor():
         self.info['unique_values_range'].append([])
       
     
+    session.close()
     #if self.table_name == 'fileperm':
     #  code.interact(local=locals())
     

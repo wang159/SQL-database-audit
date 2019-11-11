@@ -1,0 +1,398 @@
+{
+    "job": {
+        "sessnum": {
+            "joblog": [
+                "job"
+            ]
+        },
+        "username": {
+            "viewlog": [
+                "username"
+            ],
+            "session": [
+                "username"
+            ]
+        }
+    },
+    "sessionlog": {
+        "sessnum": {
+            "sessionpriv": [
+                "privid",
+                "sessnum"
+            ],
+            "route": [
+                "sessnum"
+            ],
+            "squidlog": [
+                "sessnum"
+            ],
+            "display": [
+                "dispnum"
+            ],
+            "joblog": [
+                "status"
+            ]
+        },
+        "dispnum": {
+            "viewlog": [
+                "sessnum"
+            ],
+            "display": [
+                "dispnum"
+            ],
+            "joblog": [
+                "sessnum",
+                "job",
+                "ncpus"
+            ]
+        },
+        "username": {
+            "viewlog": [
+                "username"
+            ]
+        },
+        "appname": {
+            "session": [
+                "appname"
+            ],
+            "app": [
+                "appname"
+            ]
+        }
+    },
+    "joblog": {
+        "status": {
+            "sessionlog": [
+                "sessnum"
+            ],
+            "viewlog": [
+                "sessnum"
+            ]
+        },
+        "sessnum": {
+            "sessionlog": [
+                "dispnum"
+            ],
+            "sessionpriv": [
+                "sessnum"
+            ],
+            "viewlog": [
+                "sessnum"
+            ],
+            "session": [
+                "dispnum"
+            ],
+            "route": [
+                "sessnum"
+            ],
+            "squidlog": [
+                "sessnum"
+            ]
+        },
+        "job": {
+            "sessionlog": [
+                "dispnum"
+            ],
+            "sessionpriv": [
+                "privid",
+                "sessnum"
+            ],
+            "viewlog": [
+                "sessnum"
+            ],
+            "session": [
+                "dispnum"
+            ],
+            "squidlog": [
+                "sessnum"
+            ],
+            "display": [
+                "sessnum"
+            ],
+            "job": [
+                "sessnum"
+            ],
+            "viewperm": [
+                "sessnum"
+            ],
+            "view": [
+                "viewid",
+                "sessnum"
+            ],
+            "fileperm": [
+                "sessnum"
+            ]
+        },
+        "ncpus": {
+            "sessionlog": [
+                "dispnum"
+            ],
+            "viewlog": [
+                "sessnum"
+            ],
+            "session": [
+                "dispnum"
+            ],
+            "display": [
+                "dispnum"
+            ]
+        }
+    },
+    "viewlog": {
+        "username": {
+            "sessionlog": [
+                "username"
+            ],
+            "session": [
+                "username"
+            ],
+            "job": [
+                "username"
+            ],
+            "view": [
+                "username"
+            ]
+        },
+        "sessnum": {
+            "sessionlog": [
+                "dispnum"
+            ],
+            "sessionpriv": [
+                "privid",
+                "sessnum"
+            ],
+            "session": [
+                "dispnum"
+            ],
+            "squidlog": [
+                "sessnum"
+            ],
+            "display": [
+                "dispnum"
+            ],
+            "joblog": [
+                "sessnum",
+                "job",
+                "ncpus",
+                "status"
+            ]
+        }
+    },
+    "session": {
+        "sessnum": {
+            "viewperm": [
+                "sessnum"
+            ],
+            "display": [
+                "sessnum"
+            ],
+            "fileperm": [
+                "sessnum"
+            ]
+        },
+        "username": {
+            "view": [
+                "username"
+            ],
+            "job": [
+                "username"
+            ],
+            "viewlog": [
+                "username"
+            ]
+        },
+        "dispnum": {
+            "display": [
+                "dispnum"
+            ],
+            "joblog": [
+                "sessnum",
+                "job",
+                "ncpus"
+            ],
+            "viewlog": [
+                "sessnum"
+            ]
+        },
+        "appname": {
+            "sessionlog": [
+                "appname"
+            ]
+        }
+    },
+    "sessionpriv": {
+        "sessnum": {
+            "sessionlog": [
+                "sessnum"
+            ],
+            "viewlog": [
+                "sessnum"
+            ],
+            "joblog": [
+                "sessnum",
+                "job"
+            ]
+        },
+        "privid": {
+            "sessionlog": [
+                "sessnum"
+            ],
+            "viewlog": [
+                "sessnum"
+            ],
+            "joblog": [
+                "job"
+            ]
+        }
+    },
+    "route": {
+        "sessnum": {
+            "sessionlog": [
+                "sessnum"
+            ],
+            "joblog": [
+                "sessnum"
+            ]
+        }
+    },
+    "squidlog": {
+        "sessnum": {
+            "sessionlog": [
+                "sessnum"
+            ],
+            "viewlog": [
+                "sessnum"
+            ],
+            "joblog": [
+                "sessnum",
+                "job"
+            ]
+        }
+    },
+    "display": {
+        "hostname": {
+            "host": [
+                "hostname"
+            ]
+        },
+        "dispnum": {
+            "sessionlog": [
+                "sessnum",
+                "dispnum"
+            ],
+            "viewlog": [
+                "sessnum"
+            ],
+            "session": [
+                "dispnum"
+            ],
+            "joblog": [
+                "ncpus"
+            ]
+        },
+        "sessnum": {
+            "session": [
+                "sessnum"
+            ],
+            "joblog": [
+                "job"
+            ],
+            "view": [
+                "sessnum"
+            ],
+            "fileperm": [
+                "sessnum"
+            ]
+        },
+        "vncpass": {
+            "viewperm": [
+                "vncpass"
+            ]
+        }
+    },
+    "app": {
+        "appname": {
+            "sessionlog": [
+                "appname"
+            ]
+        }
+    },
+    "view": {
+        "sessnum": {
+            "joblog": [
+                "job"
+            ],
+            "viewperm": [
+                "sessnum"
+            ],
+            "display": [
+                "sessnum"
+            ],
+            "fileperm": [
+                "sessnum"
+            ]
+        },
+        "viewid": {
+            "joblog": [
+                "job"
+            ]
+        },
+        "username": {
+            "session": [
+                "username"
+            ],
+            "viewlog": [
+                "username"
+            ]
+        }
+    },
+    "viewperm": {
+        "sessnum": {
+            "session": [
+                "sessnum"
+            ],
+            "view": [
+                "sessnum"
+            ],
+            "joblog": [
+                "job"
+            ],
+            "fileperm": [
+                "sessnum"
+            ]
+        },
+        "vncpass": {
+            "display": [
+                "vncpass"
+            ]
+        }
+    },
+    "fileperm": {
+        "sessnum": {
+            "session": [
+                "sessnum"
+            ],
+            "viewperm": [
+                "sessnum"
+            ],
+            "view": [
+                "sessnum"
+            ],
+            "display": [
+                "sessnum"
+            ],
+            "joblog": [
+                "job"
+            ]
+        }
+    },
+    "mw_status_codes": {},
+    "hosttype": {},
+    "host": {
+        "hostname": {
+            "display": [
+                "hostname"
+            ]
+        }
+    }
+}

@@ -87,8 +87,11 @@ if __name__ == '__main__':
   db_params['special_table']['nanohub']['jos_users'] = table_jos_users()
 
   db_params['exclude_table'] = dict()
-  db_params['exclude_table']['narwhal'] = ['backup_joblog_20180703', 'job', 'joblog', 'session', 'sessionlog']
-
+  db_params['exclude_table']['narwhal'] = ['backup_joblog_20180703']
+  
+  db_params['exclude_columns']=dict()
+  db_params['exclude_columns']['narwhal'] = ['']
+  
   '''
   sqlalchemy column data types. From dir(sqlalchemy.dialects.mysql.types)
   

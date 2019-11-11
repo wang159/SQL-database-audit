@@ -1,0 +1,575 @@
+{
+    "app": {
+        "name": "app",
+        "children": [
+            {
+                "name": "appname"
+            },
+            {
+                "name": "geometry"
+            },
+            {
+                "name": "depth"
+            },
+            {
+                "name": "hostreq"
+            },
+            {
+                "name": "userreq"
+            },
+            {
+                "name": "timeout"
+            },
+            {
+                "name": "command"
+            },
+            {
+                "name": "description"
+            }
+        ]
+    },
+    "display": {
+        "name": "display",
+        "children": [
+            {
+                "name": "hostname"
+            },
+            {
+                "name": "dispnum"
+            },
+            {
+                "name": "geometry"
+            },
+            {
+                "name": "depth"
+            },
+            {
+                "name": "sessnum"
+            },
+            {
+                "name": "vncpass"
+            },
+            {
+                "name": "status"
+            }
+        ]
+    },
+    "fileperm": {
+        "name": "fileperm",
+        "children": [
+            {
+                "name": "sessnum"
+            },
+            {
+                "name": "fileuser"
+            },
+            {
+                "name": "fwhost"
+            },
+            {
+                "name": "fwport"
+            },
+            {
+                "name": "cookie"
+            }
+        ]
+    },
+    "host": {
+        "name": "host",
+        "children": [
+            {
+                "name": "hostname"
+            },
+            {
+                "name": "provisions"
+            },
+            {
+                "name": "status"
+            },
+            {
+                "name": "uses"
+            },
+            {
+                "name": "portbase"
+            },
+            {
+                "name": "zone_id"
+            },
+            {
+                "name": "max_uses"
+            },
+            {
+                "name": "first_display"
+            }
+        ]
+    },
+    "hosttype": {
+        "name": "hosttype",
+        "children": [
+            {
+                "name": "name"
+            },
+            {
+                "name": "value"
+            },
+            {
+                "name": "description"
+            }
+        ]
+    },
+    "job": {
+        "name": "job",
+        "children": [
+            {
+                "name": "sessnum"
+            },
+            {
+                "name": "jobid"
+            },
+            {
+                "name": "superjob"
+            },
+            {
+                "name": "username"
+            },
+            {
+                "name": "event"
+            },
+            {
+                "name": "ncpus"
+            },
+            {
+                "name": "venue"
+            },
+            {
+                "name": "start"
+            },
+            {
+                "name": "heartbeat"
+            },
+            {
+                "name": "active"
+            },
+            {
+                "name": "jobtoken"
+            }
+        ]
+    },
+    "joblog": {
+        "name": "joblog",
+        "children": [
+            {
+                "name": "sessnum"
+            },
+            {
+                "name": "job"
+            },
+            {
+                "name": "superjob"
+            },
+            {
+                "name": "event"
+            },
+            {
+                "name": "start"
+            },
+            {
+                "name": "walltime"
+            },
+            {
+                "name": "cputime"
+            },
+            {
+                "name": "ncpus"
+            },
+            {
+                "name": "status"
+            },
+            {
+                "name": "venue"
+            },
+            {
+                "name": "zone_id"
+            },
+            {
+                "name": "end"
+            }
+        ]
+    },
+    "mw_status_codes": {
+        "name": "mw_status_codes",
+        "children": [
+            {
+                "name": "status"
+            },
+            {
+                "name": "description"
+            }
+        ]
+    },
+    "route": {
+        "name": "route",
+        "children": [
+            {
+                "name": "hostname"
+            },
+            {
+                "name": "port"
+            },
+            {
+                "name": "sessnum"
+            },
+            {
+                "name": "description"
+            }
+        ]
+    },
+    "session": {
+        "name": "session",
+        "children": [
+            {
+                "name": "sessnum"
+            },
+            {
+                "name": "username"
+            },
+            {
+                "name": "remoteip"
+            },
+            {
+                "name": "exechost"
+            },
+            {
+                "name": "dispnum"
+            },
+            {
+                "name": "start"
+            },
+            {
+                "name": "accesstime"
+            },
+            {
+                "name": "timeout"
+            },
+            {
+                "name": "appname"
+            },
+            {
+                "name": "sessname"
+            },
+            {
+                "name": "sesstoken"
+            },
+            {
+                "name": "title"
+            },
+            {
+                "name": "params"
+            },
+            {
+                "name": "zone_id"
+            }
+        ]
+    },
+    "sessionlog": {
+        "name": "sessionlog",
+        "children": [
+            {
+                "name": "sessnum"
+            },
+            {
+                "name": "username"
+            },
+            {
+                "name": "remoteip"
+            },
+            {
+                "name": "remotehost"
+            },
+            {
+                "name": "exechost"
+            },
+            {
+                "name": "dispnum"
+            },
+            {
+                "name": "start"
+            },
+            {
+                "name": "appname"
+            },
+            {
+                "name": "walltime"
+            },
+            {
+                "name": "viewtime"
+            },
+            {
+                "name": "cputime"
+            },
+            {
+                "name": "status"
+            },
+            {
+                "name": "zone_id"
+            }
+        ]
+    },
+    "sessionpriv": {
+        "name": "sessionpriv",
+        "children": [
+            {
+                "name": "privid"
+            },
+            {
+                "name": "sessnum"
+            },
+            {
+                "name": "addgroup"
+            },
+            {
+                "name": "start"
+            },
+            {
+                "name": "viewconstraint"
+            }
+        ]
+    },
+    "squidlog": {
+        "name": "squidlog",
+        "children": [
+            {
+                "name": "utc"
+            },
+            {
+                "name": "sessnum"
+            },
+            {
+                "name": "event"
+            },
+            {
+                "name": "squid"
+            },
+            {
+                "name": "uuid"
+            },
+            {
+                "name": "logobj"
+            }
+        ]
+    },
+    "usertype": {
+        "name": "usertype",
+        "children": [
+            {
+                "name": "name"
+            },
+            {
+                "name": "value"
+            },
+            {
+                "name": "description"
+            }
+        ]
+    },
+    "venue": {
+        "name": "venue",
+        "children": [
+            {
+                "name": "id"
+            },
+            {
+                "name": "venue"
+            },
+            {
+                "name": "state"
+            },
+            {
+                "name": "type"
+            },
+            {
+                "name": "mw_version"
+            },
+            {
+                "name": "ssh_key_path"
+            },
+            {
+                "name": "latitude"
+            },
+            {
+                "name": "longitude"
+            },
+            {
+                "name": "master"
+            }
+        ]
+    },
+    "venue_countries": {
+        "name": "venue_countries",
+        "children": [
+            {
+                "name": "id"
+            },
+            {
+                "name": "venue_id"
+            },
+            {
+                "name": "countrySHORT"
+            }
+        ]
+    },
+    "view": {
+        "name": "view",
+        "children": [
+            {
+                "name": "viewid"
+            },
+            {
+                "name": "sessnum"
+            },
+            {
+                "name": "username"
+            },
+            {
+                "name": "remoteip"
+            },
+            {
+                "name": "start"
+            },
+            {
+                "name": "heartbeat"
+            }
+        ]
+    },
+    "viewlog": {
+        "name": "viewlog",
+        "children": [
+            {
+                "name": "sessnum"
+            },
+            {
+                "name": "username"
+            },
+            {
+                "name": "remoteip"
+            },
+            {
+                "name": "remotehost"
+            },
+            {
+                "name": "time"
+            },
+            {
+                "name": "duration"
+            }
+        ]
+    },
+    "viewperm": {
+        "name": "viewperm",
+        "children": [
+            {
+                "name": "sessnum"
+            },
+            {
+                "name": "viewuser"
+            },
+            {
+                "name": "viewtoken"
+            },
+            {
+                "name": "geometry"
+            },
+            {
+                "name": "fwhost"
+            },
+            {
+                "name": "fwport"
+            },
+            {
+                "name": "vncpass"
+            },
+            {
+                "name": "readonly"
+            }
+        ]
+    },
+    "zone_locations": {
+        "name": "zone_locations",
+        "children": [
+            {
+                "name": "id"
+            },
+            {
+                "name": "zone_id"
+            },
+            {
+                "name": "ipFROM"
+            },
+            {
+                "name": "ipTO"
+            },
+            {
+                "name": "continent"
+            },
+            {
+                "name": "countrySHORT"
+            },
+            {
+                "name": "countryLONG"
+            },
+            {
+                "name": "ipREGION"
+            },
+            {
+                "name": "ipCITY"
+            },
+            {
+                "name": "ipLATITUDE"
+            },
+            {
+                "name": "ipLONGITUDE"
+            },
+            {
+                "name": "notes"
+            }
+        ]
+    },
+    "zones": {
+        "name": "zones",
+        "children": [
+            {
+                "name": "id"
+            },
+            {
+                "name": "zone"
+            },
+            {
+                "name": "title"
+            },
+            {
+                "name": "state"
+            },
+            {
+                "name": "is_default"
+            },
+            {
+                "name": "type"
+            },
+            {
+                "name": "master"
+            },
+            {
+                "name": "mw_version"
+            },
+            {
+                "name": "ssh_key_path"
+            },
+            {
+                "name": "description"
+            },
+            {
+                "name": "params"
+            }
+        ]
+    }
+}
